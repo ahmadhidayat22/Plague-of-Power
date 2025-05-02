@@ -8,16 +8,19 @@ public class Player : MonoBehaviour
     private Player_controls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
-    
+
     public string currentAnimaton;
     private Animator animator;
 
     const string PLAYER_IDLE = "Player_idle";
     const string PLAYER_IDLE_BACK = "Player_idle_backwards";
-    const string PLAYER_WALK= "Player_walk";
+    const string PLAYER_WALK = "Player_walk";
     const string PLAYER_WALK_BACK = "Player_walk_backwards";
 
     bool isFacingDown = true;
+    [SerializeField] private Transform gunHolder;
+    [SerializeField] private PlayerAimWeapon playerAimWeapon;
+    float angle;
 
     private void Awake()
     {
@@ -37,7 +40,8 @@ public class Player : MonoBehaviour
     {
         PlayerInput();
         FlipSprite();
-
+        angle = playerAimWeapon.GetGunAngle();
+        // Debug.Log(angle);
     }
 
     private void FixedUpdate()
@@ -49,11 +53,13 @@ public class Player : MonoBehaviour
     private void PlayerInput()
     {
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
-        // FIXME: Fix this
-        if(movement.y > 0)
+
+        if (movement.y > 0)
         {
             isFacingDown = false;
-        }else if(movement.y < 0){
+        }
+        else if (movement.y < 0)
+        {
             isFacingDown = true;
         }
 
@@ -64,28 +70,31 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.position + movement * (MoveSpeed * Time.fixedDeltaTime));
         // Debug.Log("X:"+ movement.x);
         // Debug.Log("Y:"+ movement.y);
-        
-        
-        // FIXME: Fix this
-        
+
+
 
         if (movement.x != 0 || movement.y != 0)
         {
-            if(isFacingDown )
+            if (isFacingDown)
             {
                 ChangeAnimationState(PLAYER_WALK);
 
-            }else{
+            }
+            else
+            {
                 ChangeAnimationState(PLAYER_WALK_BACK);
 
             }
         }
-        else{
-            if(isFacingDown )
+        else
+        {
+            if (isFacingDown)
             {
-            ChangeAnimationState(PLAYER_IDLE);
+                ChangeAnimationState(PLAYER_IDLE);
 
-            }else{
+            }
+            else
+            {
                 ChangeAnimationState(PLAYER_IDLE_BACK);
             }
         }
@@ -93,15 +102,43 @@ public class Player : MonoBehaviour
 
     void FlipSprite()
     {
-        if (movement.x > 0)
+        // FIXME: bug ketika jalan kek kanan atas dan aiming, senjata berubah arah
+        
+        if (movement.x > 0 || (angle < 75 && angle > -75))
         {
+            if(angle > 45 )
+            {
+                // ChangeAnimationState(PLAYER_IDLE_BACK);
+                isFacingDown =false;
+            }else{
+                // ChangeAnimationState(PLAYER_IDLE);
+                isFacingDown =true;
+            }
             transform.localScale = new Vector3(1, 1, 1);
+            gunHolder.localPosition = new Vector3(Mathf.Abs(gunHolder.localPosition.x), gunHolder.localPosition.y, 0);
         }
-        else if (movement.x < 0)
+        
+        else if (movement.x < 0 || ( angle > 100 || angle < -100 && angle > -180 ) )
         {
+            if(angle > 120 )
+            {
+                // ChangeAnimationState(PLAYER_IDLE_BACK);
+                isFacingDown =false;
+            }
+            else{
+                // ChangeAnimationState(PLAYER_IDLE);
+                isFacingDown =true;
+            }
             transform.localScale = new Vector3(-1, 1, 1);
+            gunHolder.localPosition = new Vector3(Mathf.Abs(gunHolder.localPosition.x), gunHolder.localPosition.y, 0);
         }
     }
+
+    void FlipOnRotateMouse()
+    {
+       
+    }
+
     void ChangeAnimationState(string newAnimation, bool forcePlay = false)
     {
         if (!forcePlay && currentAnimaton == newAnimation) return;
