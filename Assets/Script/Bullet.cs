@@ -11,7 +11,17 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         // hancurkan peluru saat kena objek
         Destroy(gameObject);
+    }
+
+       // Untuk collider isTrigger = true
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

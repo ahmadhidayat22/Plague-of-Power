@@ -20,6 +20,9 @@ public class MainMenu : MonoBehaviour
     public GameObject Achievement;
     public GameObject LeaveGame;
 
+    const string MapsLevel1 = "Level1";
+    const string MapsLevel2 = "Level2";
+    const string MapsLevel3 = "Level3";
     
     
     public void Start()
@@ -98,7 +101,7 @@ public class MainMenu : MonoBehaviour
                 break;
 
             case "StartGameMap1":
-                SceneManager.LoadScene("SampleScene");
+                SceneManager.LoadScene(MapsLevel1);
                 break;
                 
             case "Settings":

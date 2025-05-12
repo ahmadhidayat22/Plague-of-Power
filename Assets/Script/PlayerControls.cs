@@ -22,11 +22,27 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerAimWeapon playerAimWeapon;
     float angle;
 
+    [Header("Health Player")]
+    public float maxHealth = 5f;
+    public float currentHealth;
+    [SerializeField] FloatingHealthBar healthBar;
+    Collider2D _lastPointTouched;
+    public int coinCounter = 0;
+    public int gemsCounter = 0;
+
+
     private void Awake()
     {
+        healthBar = GetComponentInChildren<FloatingHealthBar>();
         playerControls = new Player_controls();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        currentHealth = maxHealth;
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
+
+        coinCounter = PlayerPrefs.HasKey("Coin") ? PlayerPrefs.GetInt("Coin") : 0;
+        gemsCounter = PlayerPrefs.HasKey("Gems") ? PlayerPrefs.GetInt("Gems") : 0;
+
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnEnable()
@@ -102,9 +118,9 @@ public class Player : MonoBehaviour
 
     void FlipSprite()
     {
-        // FIXME: bug ketika jalan kek kanan atas dan aiming, senjata berubah arah
-        
-        if (movement.x > 0 || (angle < 75 && angle > -75))
+        bool isAimingRight = angle > -75 && angle < 75;
+        // Debug.Log("Movement x : "+movement.x+ "; angle :" + angle);
+        if (isAimingRight )
         {
             if(angle > 45 )
             {
@@ -118,7 +134,7 @@ public class Player : MonoBehaviour
             gunHolder.localPosition = new Vector3(Mathf.Abs(gunHolder.localPosition.x), gunHolder.localPosition.y, 0);
         }
         
-        else if (movement.x < 0 || ( angle > 100 || angle < -100 && angle > -180 ) )
+        else if (angle > 100 || (angle < -100 && angle > -180 ) )
         {
             if(angle > 120 )
             {
@@ -134,11 +150,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    void FlipOnRotateMouse()
-    {
-       
-    }
-
     void ChangeAnimationState(string newAnimation, bool forcePlay = false)
     {
         if (!forcePlay && currentAnimaton == newAnimation) return;
@@ -146,5 +157,40 @@ public class Player : MonoBehaviour
         animator.Play(newAnimation);
         currentAnimaton = newAnimation;
     }
+
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        Debug.Log("I'm hit! HP: " + currentHealth);
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        if(currentHealth <= 0 )
+        {
+            Die();
+        }
+    }
+    void Die()
+    {
+        // simpan state jumlah coin dan gems
+        PlayerPrefs.SetInt("Coin", coinCounter);
+        PlayerPrefs.SetInt("Gems", gemsCounter);
+        // Tambahkan animasi atau efek di sini jika perlu
+        Destroy(gameObject);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Coin") && collision.gameObject.activeSelf )
+        {
+            collision.gameObject.SetActive(false);
+            coinCounter +=1;
+        }
+        else if(collision.CompareTag("Gems") && collision.gameObject.activeSelf )
+        {
+            collision.gameObject.SetActive(false);
+            gemsCounter +=1;
+        }
+    }
+
 
 }
