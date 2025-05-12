@@ -29,8 +29,8 @@ public class Player : MonoBehaviour
     Collider2D _lastPointTouched;
     public int coinCounter = 0;
     public int gemsCounter = 0;
-
-
+    public int medkitCounter = 0;
+    private int healAmountFromMedkit = 5;
     private void Awake()
     {
         healthBar = GetComponentInChildren<FloatingHealthBar>();
@@ -158,6 +158,27 @@ public class Player : MonoBehaviour
         currentAnimaton = newAnimation;
     }
 
+    public void Heal(int amount)
+    {
+
+        if (amount < 0)
+        {
+            throw new System.ArgumentOutOfRangeException("Cannot have negative healing");
+        }
+
+        bool wouldBeOverMaxHealth = currentHealth + amount > maxHealth;
+
+        if (wouldBeOverMaxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth += amount;
+        }
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        
+    }
 
     public void TakeDamage(float damage)
     {
@@ -189,6 +210,11 @@ public class Player : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             gemsCounter +=1;
+        }
+        else if ( collision.CompareTag("Medkit") && collision.gameObject.activeSelf)
+        {
+            collision.gameObject.SetActive(false);
+            medkitCounter += 1;
         }
     }
 

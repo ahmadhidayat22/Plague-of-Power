@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - Coin
   - Gems
+  - Medkit
   layers:
   - Default
   - TransparentFX

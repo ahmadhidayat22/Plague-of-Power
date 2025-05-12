@@ -21,17 +21,23 @@ public class PlayerAimWeapon : MonoBehaviour
 
     private CinemachineShake cinemachineShake;
 
-    public float GetGunAngle()
-    {
-        return angle;
-    }
+    [Header("Ammo Settings")]
+    public int maxAmmo = 10;
+    public int currentAmmo;
+    public int totalAmmo = 30;
+    public float reloadTime = 2f;
+    private bool isReloading = false;
 
+    public string ammoText;
+    public float GetGunAngle() => angle;
 
     private void Awake()
     {
         animator = Gun.GetComponent<Animator>();
         controls = new Player_controls();
         controls.Combat.Shoot.performed += ctx => OnShoot();  // bind action
+
+        controls.Combat.Reload.performed += ctx => TryReload(); // Tambahkan ini
         if (CinemachineShake.Instance != null)
         {
             cinemachineShake = CinemachineShake.Instance;
@@ -41,19 +47,20 @@ public class PlayerAimWeapon : MonoBehaviour
             Debug.LogWarning("Cinemachine Shake instance not found!");
         }
     }
+    private void OnEnable() => controls.Enable();
+    private void OnDisable() => controls.Disable();
 
-    private void OnEnable()
+
+     private void Start()
     {
-        controls.Enable();
+        currentAmmo = maxAmmo;
+        ammoText = currentAmmo + " / " + totalAmmo;
     }
-
-    private void OnDisable()
-    {
-        controls.Disable();
-    }
-
     private void Update()
     {
+        // if (isReloading) return;
+        ammoText = currentAmmo + " / " + totalAmmo;
+
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         direction = mousePos - (Vector2)Gun.position;
@@ -89,9 +96,15 @@ public class PlayerAimWeapon : MonoBehaviour
 
     void OnShoot()
     {
-        if (Time.time < nextFireTime || ShootPoint == null || bulletPrefab == null || ShootFlash == null)
+         if (Time.time < nextFireTime || isReloading || ShootPoint == null || bulletPrefab == null || ShootFlash == null)
             return;
 
+        if (currentAmmo <= 0)
+        {
+            Debug.Log("Out of ammo! Reload needed.");
+            TryReload();
+            return;
+        }
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 shootDir = (mousePos - (Vector2)ShootPoint.position).normalized;
 
@@ -106,6 +119,7 @@ public class PlayerAimWeapon : MonoBehaviour
             {
                 rb.linearVelocity = shootDir * bulletSpeed;
             }
+            currentAmmo--;
             StartCoroutine(FlashEffect());
             if (cinemachineShake != null)
             {
@@ -123,6 +137,31 @@ public class PlayerAimWeapon : MonoBehaviour
         yield return new WaitForSeconds(0.05f); // tampil selama 0.05 detik
         ShootFlash.SetActive(false);
 
+    }
+
+    
+    void TryReload()
+    {
+        if (!isReloading && currentAmmo < maxAmmo && totalAmmo > 0)
+        {
+            StartCoroutine(Reload());
+        }
+    }
+
+    IEnumerator Reload()
+    {
+        isReloading = true;
+        Debug.Log("Reloading...");
+        // animator.SetTrigger("Reload"); // jika kamu punya animasi reload
+
+        yield return new WaitForSeconds(reloadTime);
+
+        int ammoToReload = Mathf.Min(maxAmmo - currentAmmo, totalAmmo);
+        currentAmmo += ammoToReload;
+        totalAmmo -= ammoToReload;
+
+        Debug.Log("Reload complete: " + currentAmmo + " / " + totalAmmo);
+        isReloading = false;
     }
 
 }

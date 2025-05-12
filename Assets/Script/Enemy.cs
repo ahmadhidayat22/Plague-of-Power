@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     private Player playerHealth;
 
 
+     private WaveManager waveManager;
     // loot items;
     [Header("Loot")]
     public List<LootItem> lootTable = new List<LootItem>();
@@ -37,10 +38,10 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
-       GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
-
+        waveManager = FindFirstObjectByType<WaveManager>();
         if (playerObj != null)
         {
             player = playerObj.transform;
@@ -53,7 +54,6 @@ public class Enemy : MonoBehaviour
             Debug.LogWarning("Player not found!");
         }
     }
-
     private void Update()
     {
         if (player == null) return;
@@ -137,6 +137,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        // waveManager.OnEnemyKilled();
         // spawn item yang di drop enemy
         // Tambahkan animasi atau efek di sini jika perlu
         foreach(LootItem lootItem in lootTable)

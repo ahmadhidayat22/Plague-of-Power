@@ -1,25 +1,33 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public float spawnInterval = 3f;
-    public float spawnDistanceFromCamera = 2f;
-
+    public float spawnDistanceFromCamera = 2f; 
     private Camera mainCamera;
 
     private void Start()
     {
         mainCamera = Camera.main;
-        InvokeRepeating("SpawnEnemy", 1f, spawnInterval);
+        // InvokeRepeating("SpawnEnemy", 1f, spawnInterval);
     }
 
-    private void SpawnEnemy()
+    // public void SpawnEnemy()
+    // {
+    //     Vector2 spawnPos = GetRandomPositionOutsideCamera();
+    //     Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+    // }
+    public IEnumerator SpawnEnemy(int count, float interval)
     {
-        Vector2 spawnPos = GetRandomPositionOutsideCamera();
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        for (int i = 0; i < count; i++)
+        {
+            Vector2 spawnPos = GetRandomPositionOutsideCamera();
+            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            yield return new WaitForSeconds(interval);
+        }
     }
-
     private Vector2 GetRandomPositionOutsideCamera()
     {
         Vector2 camPos = mainCamera.transform.position;
