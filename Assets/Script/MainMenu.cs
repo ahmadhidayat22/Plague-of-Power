@@ -31,6 +31,7 @@ public class MainMenu : MonoBehaviour
         BackSound.value = 0.7f;
         EffectSound.value = 0.7f;
 
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         UpdateBackSoundVolume();
         UpdateEffectSoundVolume();
         StartMenu1.SetActive(false);

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class Player : MonoBehaviour
 {
     [SerializeField] float MoveSpeed = 1f;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     public int gemsCounter = 0;
     public int medkitCounter = 0;
     private int healAmountFromMedkit = 5;
+    public GameObject GameOverMenu;
     private void Awake()
     {
         healthBar = GetComponentInChildren<FloatingHealthBar>();
@@ -49,7 +51,11 @@ public class Player : MonoBehaviour
     {
         playerControls.Enable();
     }
-
+    
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
 
     // Update is called once per frame
     void Update()
@@ -196,6 +202,7 @@ public class Player : MonoBehaviour
         PlayerPrefs.SetInt("Coin", coinCounter);
         PlayerPrefs.SetInt("Gems", gemsCounter);
         // Tambahkan animasi atau efek di sini jika perlu
+        GameOverMenu.SetActive(true);
         Destroy(gameObject);
     }
 
