@@ -7001,7 +7001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3199245995554946266, guid: 0ce50d579ab617d4ead79969f760a9fd, type: 3}
+  m_Sprite: {fileID: -5687840249154085617, guid: c77a98af59507b84c91773339154a593, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10736,7 +10736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 407185093059700195, guid: 484d817020ce7ed41b3df5e96749d43d, type: 3}
+  m_Sprite: {fileID: -2643486534633313215, guid: 97039cdcc921dda41ae67227a38517dd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17062,7 +17062,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: JUDUL MAP 3
+  m_text: JUDUL MAP 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
   m_sharedMaterial: {fileID: 1725155287645012601, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
