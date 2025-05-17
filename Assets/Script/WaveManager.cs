@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class WaveManager : MonoBehaviour
 {
     [System.Serializable]
@@ -19,10 +19,18 @@ public class WaveManager : MonoBehaviour
     private bool isSpawning = false;
     private bool waitingNextWave = false;
 
-    public Text waveText; // opsional: UI info wave
-
+    public GameObject WavePanel;       
+    
+    private TMP_Text waveText;
+     
     private void Start()
     {
+        if (WavePanel != null)
+        {
+            waveText = WavePanel.GetComponentInChildren<TMP_Text>();
+            WavePanel.SetActive(false); // sembunyikan panel saat awal
+        }
+
         StartCoroutine(HandleWave());
     }
 
@@ -41,20 +49,28 @@ public class WaveManager : MonoBehaviour
     {
         isSpawning = true;
 
-        if (waveText != null)
+        // Tampilkan panel dan teks wave
+        if (WavePanel != null && waveText != null)
         {
+            WavePanel.SetActive(true);
             waveText.text = "Wave " + (currentWave + 1);
         }
+
         Debug.Log("Wave : " + (currentWave + 1));
 
-        yield return new WaitForSeconds(2f); // sedikit delay sebelum spawn
+        yield return new WaitForSeconds(2f); // durasi tampilnya panel wave
 
-        // Mulai spawn
+        if (WavePanel != null)
+        {
+            WavePanel.SetActive(false); // sembunyikan panel lagi
+        }
+
+        // Mulai spawn musuh
         yield return StartCoroutine(spawner.SpawnEnemy(waves[currentWave].enemyCount, waves[currentWave].spawnInterval));
 
         isSpawning = false;
 
-        // Jika masih ada wave berikutnya, tunggu dulu sebelum next wave
+        // Jika masih ada wave berikutnya, tunggu jeda antar wave
         if (currentWave < waves.Length - 1)
         {
             waitingNextWave = true;

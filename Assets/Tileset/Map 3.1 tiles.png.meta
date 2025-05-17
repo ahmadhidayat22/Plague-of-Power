@@ -150,6 +150,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -584,7 +597,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Map 3.1 tiles_0: 6731191112170177388
+      Map 3.1 tiles_1: 915263363992201578
+      Map 3.1 tiles_10: 7700944192688509582
+      Map 3.1 tiles_11: -5944354624386136572
+      Map 3.1 tiles_12: 6419678247044090766
+      Map 3.1 tiles_13: 3100279367824965628
+      Map 3.1 tiles_14: -8828880273919223868
+      Map 3.1 tiles_15: 3159974233899122015
+      Map 3.1 tiles_16: 1107332429228931266
+      Map 3.1 tiles_17: 7920989541183322538
+      Map 3.1 tiles_18: -7529063041889527943
+      Map 3.1 tiles_2: 276939029118335915
+      Map 3.1 tiles_3: -765584903584049456
+      Map 3.1 tiles_4: -3243211192614760808
+      Map 3.1 tiles_5: -958665158590195567
+      Map 3.1 tiles_6: -4766664993174789190
+      Map 3.1 tiles_7: -6803874997548579528
+      Map 3.1 tiles_8: -5084936567251004163
+      Map 3.1 tiles_9: -6665522988234764850
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

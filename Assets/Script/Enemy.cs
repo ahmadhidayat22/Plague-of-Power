@@ -13,12 +13,14 @@ public class Enemy : MonoBehaviour
     private Vector2 movement;
 
     public Animator animator;
+    [Header("Health")]
     public int maxHealth = 3;
 
     private int currentHealth;
+
     float distance;
     [SerializeField] FloatingHealthBar healthBar;
-    [SerializeField] Transform canvasHealthBar;
+    [SerializeField] GameObject canvasHealthBar;
     public float attackCooldown = 2f;
     public int attackDamage = 1;
     private bool canAttack = true;
@@ -40,6 +42,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+        canvasHealthBar.SetActive(false);
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         waveManager = FindFirstObjectByType<WaveManager>();
         if (playerObj != null)
@@ -69,12 +72,12 @@ public class Enemy : MonoBehaviour
             if (direction.x > 0.1f){
 
                 transform.localScale = new Vector3(-2.5f, 2.5f, 2.5f); // Menghadap kanan
-                canvasHealthBar.localScale = new Vector3(-1f,1f,1f);
+                canvasHealthBar.transform.localScale = new Vector3(-1f,1f,1f);
             }
             else if (direction.x < -0.1f){
 
                 transform.localScale = new Vector3(2.5f, 2.5f, 2.5f); // Menghadap kiri
-                canvasHealthBar.localScale = new Vector3(1f,1f,1f);
+                canvasHealthBar.transform.localScale = new Vector3(1f,1f,1f);
             }
 
                
@@ -106,7 +109,7 @@ public class Enemy : MonoBehaviour
          if(playerHealth != null)
         {
             playerHealth.TakeDamage(attackDamage);
-            Debug.Log("Enemy attacked player! Remaining health: " + playerHealth.currentHealth);
+            // Debug.Log("Enemy attacked player! Remaining health: " + playerHealth.currentHealth);
         }
         
         yield return new WaitForSeconds(attackCooldown);
@@ -155,7 +158,15 @@ public class Enemy : MonoBehaviour
     {
         if(loot)
         {
-            GameObject droppedLoot = Instantiate(loot, transform.position, Quaternion.identity);
+            // Jarak offset maksimum dari posisi enemy
+        float dropRadius = 0.5f; // Bisa diatur sesuai keinginan
+
+        // Offset acak di sekitar enemy (dalam lingkaran)
+        Vector2 randomOffset = Random.insideUnitCircle * dropRadius;
+
+        Vector3 dropPosition = transform.position + (Vector3)randomOffset;
+
+        GameObject droppedLoot = Instantiate(loot, dropPosition, Quaternion.identity);
 
             // droppedLoot.GetComponent<SpriteRenderer>().color = Color.red;
         }
@@ -164,7 +175,8 @@ public class Enemy : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
-            TakeDamage(1); // misalnya bullet memberi 1 damage
+            canvasHealthBar.SetActive(true);
+            TakeDamage(3); // misalnya bullet memberi 1 damage
             // Destroy(collision.gameObject); // hancurkan peluru setelah kena
         }
         

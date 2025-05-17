@@ -230,18 +230,18 @@ MonoBehaviour:
   moveSpeed: 4
   stopDistance: 1.2
   animator: {fileID: 3044808581996301973}
-  maxHealth: 3
+  maxHealth: 5
   healthBar: {fileID: 8434394724638484432}
-  canvasHealthBar: {fileID: 931780974230639829}
+  canvasHealthBar: {fileID: 212084554848934122}
   attackCooldown: 2
   attackDamage: 1
   lootTable:
   - itemPrefab: {fileID: 8747525754561817038, guid: 6e7b2d137e3487a4ca52fb6f2d386f23, type: 3}
-    dropChance: 60
+    dropChance: 40
   - itemPrefab: {fileID: 8207184955055583785, guid: 6c98fc03ab9bfa349b79f0d2971c80f3, type: 3}
-    dropChance: 80
+    dropChance: 60
   - itemPrefab: {fileID: 9025987081371244890, guid: 00cfd6dca40b0ef4fa83aa07c411dba8, type: 3}
-    dropChance: 84
+    dropChance: 5
 --- !u!212 &1362675777222917478
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

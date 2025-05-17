@@ -24,14 +24,26 @@ public class Player : MonoBehaviour
     float angle;
 
     [Header("Health Player")]
-    public float maxHealth = 5f;
-    public float currentHealth;
+    private float maxHealth = 100f;
+    private float currentHealth;
     [SerializeField] FloatingHealthBar healthBar;
     Collider2D _lastPointTouched;
-    public int coinCounter = 0;
-    public int gemsCounter = 0;
+    private int coinCounter = 0;
+    private int gemsCounter = 0;
     public int medkitCounter = 0;
-    private int healAmountFromMedkit = 5;
+    private float healAmountFromMedkit = 2f;
+    private float healCooldown = 5f;
+    private float nextHealTime = 0f;
+
+    public int GetCoin { get { return coinCounter; } }
+    public int GetGems { get { return gemsCounter; }}
+    public int GetMedkit { get { return medkitCounter; }}
+    public float getCurrentHealth { get { return currentHealth; }}
+    public float getMaxHealth { get { return maxHealth; }}
+
+    public float setMaxhealth { set { maxHealth = value; } }
+    
+
     public GameObject GameOverMenu;
     private void Awake()
     {
@@ -41,6 +53,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        playerControls.Combat.Heal.performed += ctx => Heal(healAmountFromMedkit);
 
         coinCounter = PlayerPrefs.HasKey("Coin") ? PlayerPrefs.GetInt("Coin") : 0;
         gemsCounter = PlayerPrefs.HasKey("Gems") ? PlayerPrefs.GetInt("Gems") : 0;
@@ -92,8 +105,6 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.position + movement * (MoveSpeed * Time.fixedDeltaTime));
         // Debug.Log("X:"+ movement.x);
         // Debug.Log("Y:"+ movement.y);
-
-
 
         if (movement.x != 0 || movement.y != 0)
         {
@@ -164,8 +175,11 @@ public class Player : MonoBehaviour
         currentAnimaton = newAnimation;
     }
 
-    public void Heal(int amount)
+    public void Heal(float amount)
     {
+        if( Time.time < nextHealTime )
+            return;
+
 
         if (amount < 0)
         {
@@ -183,7 +197,8 @@ public class Player : MonoBehaviour
             currentHealth += amount;
         }
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
-        
+        medkitCounter --;
+        nextHealTime = Time.time + healCooldown;
     }
 
     public void TakeDamage(float damage)
@@ -207,19 +222,20 @@ public class Player : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision)
-    {
+    { 
         if(collision.CompareTag("Coin") && collision.gameObject.activeSelf )
         {
             collision.gameObject.SetActive(false);
             coinCounter +=1;
         }
-        else if(collision.CompareTag("Gems") && collision.gameObject.activeSelf )
+        if(collision.CompareTag("Gems") && collision.gameObject.activeSelf )
         {
             collision.gameObject.SetActive(false);
             gemsCounter +=1;
         }
-        else if ( collision.CompareTag("Medkit") && collision.gameObject.activeSelf)
+        if ( collision.CompareTag("Medkit") && collision.gameObject.activeSelf)
         {
+           
             collision.gameObject.SetActive(false);
             medkitCounter += 1;
         }
