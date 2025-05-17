@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-
 public class PlayerAimWeapon : MonoBehaviour
 {
     public Animator animator;
@@ -10,6 +9,8 @@ public class PlayerAimWeapon : MonoBehaviour
     public Transform Gun;
     public Transform ShootPoint;
     public GameObject ShootFlash;
+
+    AudioManager audioManager;
 
     Vector2 direction;
     private float angle;
@@ -36,6 +37,18 @@ public class PlayerAimWeapon : MonoBehaviour
         animator = Gun.GetComponent<Animator>();
         controls = new Player_controls();
         controls.Combat.Shoot.performed += ctx => OnShoot();  // bind action
+        GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
+        if (audioObj == null)
+        {
+            Debug.LogError("AudioManager object with tag 'Audio' not found!");
+            return;
+        }
+
+        audioManager = audioObj.GetComponent<AudioManager>();
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager component not found on the tagged object!");
+        }
 
         controls.Combat.Reload.performed += ctx => TryReload(); // Tambahkan ini
         if (CinemachineShake.Instance != null)
@@ -115,6 +128,8 @@ public class PlayerAimWeapon : MonoBehaviour
             float angle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg;
             bullet.transform.rotation = Quaternion.Euler(0f, 0f, angle);
             animator.Play("Shoot");
+            audioManager.PlaySFX(audioManager.shoot);
+
             if (rb != null)
             {
                 rb.linearVelocity = shootDir * bulletSpeed;
@@ -153,6 +168,7 @@ public class PlayerAimWeapon : MonoBehaviour
         isReloading = true;
         Debug.Log("Reloading...");
         // animator.SetTrigger("Reload"); // jika kamu punya animasi reload
+        audioManager.PlaySFX(audioManager.reload);
 
         yield return new WaitForSeconds(reloadTime);
 

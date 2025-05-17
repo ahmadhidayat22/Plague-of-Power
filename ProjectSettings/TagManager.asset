@@ -10,6 +10,7 @@ TagManager:
   - Coin
   - Gems
   - Medkit
+  - Audio
   layers:
   - Default
   - TransparentFX
