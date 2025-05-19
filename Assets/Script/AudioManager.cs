@@ -26,7 +26,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (FindObjectsOfType<AudioManager>().Length > 1)
+        if (FindObjectsByType<AudioManager>(FindObjectsSortMode.None).Length > 1)
         {
             Destroy(gameObject);
             return;
