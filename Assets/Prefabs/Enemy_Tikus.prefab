@@ -230,7 +230,7 @@ MonoBehaviour:
   moveSpeed: 4
   stopDistance: 1.2
   animator: {fileID: 3044808581996301973}
-  maxHealth: 5
+  maxHealth: 10
   healthBar: {fileID: 8434394724638484432}
   canvasHealthBar: {fileID: 212084554848934122}
   attackCooldown: 2

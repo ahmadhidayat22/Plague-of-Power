@@ -14,11 +14,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip menu_hoover;
     public AudioClip menu_select;
 
-    //private void Start()
-    //{
+    // private void Start()
+    // {
     //    musicSource.clip = background;
     //    musicSource.Play();
-    //}
+    // }
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);

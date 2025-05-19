@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
 
     public Animator animator;
     [Header("Health")]
-    public int maxHealth = 3;
+    public int maxHealth = 10;
 
     private int currentHealth;
 
@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] FloatingHealthBar healthBar;
     [SerializeField] GameObject canvasHealthBar;
     public float attackCooldown = 2f;
-    public int attackDamage = 1;
+    public int attackDamage = 6;
     private bool canAttack = true;
     private Player playerHealth;
 
@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
         healthBar = GetComponentInChildren<FloatingHealthBar>();
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
+        
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
@@ -128,8 +129,9 @@ public class Enemy : MonoBehaviour
     
     public void TakeDamage(int damage)
     {
+        Debug.Log("Enemy HP: " + currentHealth);
         currentHealth -= damage;
-        Debug.Log("Enemy hit! HP: " + currentHealth);
+        Debug.Log("Enemy Hit HP: " + currentHealth);
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         if (currentHealth <= 0)
         {
@@ -175,9 +177,13 @@ public class Enemy : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
-            canvasHealthBar.SetActive(true);
-            TakeDamage(3); // misalnya bullet memberi 1 damage
-            // Destroy(collision.gameObject); // hancurkan peluru setelah kena
+            Bullet bullet = collision.GetComponent<Bullet>();
+            if (bullet != null)
+            {
+                canvasHealthBar.SetActive(true);
+                TakeDamage(bullet.damage);
+                // Destroy(collision.gameObject);
+            }
         }
         
         

@@ -79,9 +79,9 @@
             "actions": [
                 {
                     "name": "Shoot",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "93e3fcbc-b394-4c0e-a353-3fc68b011325",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -96,9 +96,27 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ChangeWeapon1",
+                    "type": "Button",
+                    "id": "51bdb4b2-f50c-434a-9af2-1cb145eb6529",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Heal",
                     "type": "Button",
                     "id": "8aeb8915-72f7-4c43-b336-244a04bdd4eb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "upgrade",
+                    "type": "Button",
+                    "id": "481716fd-d37a-4bbf-b737-e856f5c5193a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -110,7 +128,7 @@
                     "name": "",
                     "id": "e67239c7-e7ec-42fc-8adb-9f615a70a977",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
@@ -130,12 +148,34 @@
                 },
                 {
                     "name": "",
+                    "id": "b80ae22c-44e6-4ad2-9d8b-e6bdfb8d732a",
+                    "path": "<Keyboard>/#(F)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeWeapon1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "3b335854-dde9-4c48-af48-6165d3bbe73a",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Heal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f7066899-d8ac-43b8-ad94-c1fdeb73ea63",
+                    "path": "<Keyboard>/#(G)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "upgrade",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -20,7 +20,9 @@ public class Player : MonoBehaviour
 
     bool isFacingDown = true;
     [SerializeField] private Transform gunHolder;
-    [SerializeField] private PlayerAimWeapon playerAimWeapon;
+    // [SerializeField] private PlayerAimWeapon playerAimWeapon;
+    private WeaponManager weaponManager;
+    [SerializeField] private GunShoot playerAimWeapon;
     float angle;
 
     [Header("Health Player")]
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
     public GameObject GameOverMenu;
     private void Awake()
     {
+        weaponManager = GameObject.FindAnyObjectByType<WeaponManager>();
         healthBar = GetComponentInChildren<FloatingHealthBar>();
         playerControls = new Player_controls();
         rb = GetComponent<Rigidbody2D>();
@@ -54,6 +57,8 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         playerControls.Combat.Heal.performed += ctx => Heal(healAmountFromMedkit);
+        playerControls.Combat.ChangeWeapon1.performed += ctx => weaponManager.NextWeapon();
+        playerControls.Combat.upgrade.performed += ctx => weaponManager.UpgradeCurrentWeapon(5f);
 
         coinCounter = PlayerPrefs.HasKey("Coin") ? PlayerPrefs.GetInt("Coin") : 0;
         gemsCounter = PlayerPrefs.HasKey("Gems") ? PlayerPrefs.GetInt("Gems") : 0;

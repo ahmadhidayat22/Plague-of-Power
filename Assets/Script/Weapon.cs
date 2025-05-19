@@ -1,10 +1,20 @@
+using System;
 using UnityEngine;
-[System.Serializable]
-public class Weapon
+
+[CreateAssetMenu(fileName = "NewWeapon", menuName = "Weapon/Create New Weapon")]
+public class Weapon : ScriptableObject
 {
-    public string weaponName;
     public GameObject weaponPrefab;
-    public int cost;
-    public float damage;
+    public string weaponName;
+    public Sprite weaponSprite;
+    public GameObject bulletPrefab;
     public float fireRate;
+    public int maxAmmo;
+    public int totalAmmo;
+    public float bulletSpeed;
+    public string animationShootName;
+    public RuntimeAnimatorController animatorController; // Untuk animasi berbeda tiap senjata
+    public bool hasInfinityAmmo;
+    public int damage;
+
 }

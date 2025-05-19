@@ -165,9 +165,9 @@ public partial class @Player_controls: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Shoot"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""93e3fcbc-b394-4c0e-a353-3fc68b011325"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -182,9 +182,27 @@ public partial class @Player_controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""ChangeWeapon1"",
+                    ""type"": ""Button"",
+                    ""id"": ""51bdb4b2-f50c-434a-9af2-1cb145eb6529"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Heal"",
                     ""type"": ""Button"",
                     ""id"": ""8aeb8915-72f7-4c43-b336-244a04bdd4eb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""upgrade"",
+                    ""type"": ""Button"",
+                    ""id"": ""481716fd-d37a-4bbf-b737-e856f5c5193a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -196,7 +214,7 @@ public partial class @Player_controls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""e67239c7-e7ec-42fc-8adb-9f615a70a977"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shoot"",
@@ -216,12 +234,34 @@ public partial class @Player_controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b80ae22c-44e6-4ad2-9d8b-e6bdfb8d732a"",
+                    ""path"": ""<Keyboard>/#(F)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeWeapon1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""3b335854-dde9-4c48-af48-6165d3bbe73a"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Heal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7066899-d8ac-43b8-ad94-c1fdeb73ea63"",
+                    ""path"": ""<Keyboard>/#(G)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""upgrade"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -237,7 +277,9 @@ public partial class @Player_controls: IInputActionCollection2, IDisposable
         m_Combat = asset.FindActionMap("Combat", throwIfNotFound: true);
         m_Combat_Shoot = m_Combat.FindAction("Shoot", throwIfNotFound: true);
         m_Combat_Reload = m_Combat.FindAction("Reload", throwIfNotFound: true);
+        m_Combat_ChangeWeapon1 = m_Combat.FindAction("ChangeWeapon1", throwIfNotFound: true);
         m_Combat_Heal = m_Combat.FindAction("Heal", throwIfNotFound: true);
+        m_Combat_upgrade = m_Combat.FindAction("upgrade", throwIfNotFound: true);
     }
 
     ~@Player_controls()
@@ -417,7 +459,9 @@ public partial class @Player_controls: IInputActionCollection2, IDisposable
     private List<ICombatActions> m_CombatActionsCallbackInterfaces = new List<ICombatActions>();
     private readonly InputAction m_Combat_Shoot;
     private readonly InputAction m_Combat_Reload;
+    private readonly InputAction m_Combat_ChangeWeapon1;
     private readonly InputAction m_Combat_Heal;
+    private readonly InputAction m_Combat_upgrade;
     /// <summary>
     /// Provides access to input actions defined in input action map "Combat".
     /// </summary>
@@ -438,9 +482,17 @@ public partial class @Player_controls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Reload => m_Wrapper.m_Combat_Reload;
         /// <summary>
+        /// Provides access to the underlying input action "Combat/ChangeWeapon1".
+        /// </summary>
+        public InputAction @ChangeWeapon1 => m_Wrapper.m_Combat_ChangeWeapon1;
+        /// <summary>
         /// Provides access to the underlying input action "Combat/Heal".
         /// </summary>
         public InputAction @Heal => m_Wrapper.m_Combat_Heal;
+        /// <summary>
+        /// Provides access to the underlying input action "Combat/upgrade".
+        /// </summary>
+        public InputAction @upgrade => m_Wrapper.m_Combat_upgrade;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -473,9 +525,15 @@ public partial class @Player_controls: IInputActionCollection2, IDisposable
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
+            @ChangeWeapon1.started += instance.OnChangeWeapon1;
+            @ChangeWeapon1.performed += instance.OnChangeWeapon1;
+            @ChangeWeapon1.canceled += instance.OnChangeWeapon1;
             @Heal.started += instance.OnHeal;
             @Heal.performed += instance.OnHeal;
             @Heal.canceled += instance.OnHeal;
+            @upgrade.started += instance.OnUpgrade;
+            @upgrade.performed += instance.OnUpgrade;
+            @upgrade.canceled += instance.OnUpgrade;
         }
 
         /// <summary>
@@ -493,9 +551,15 @@ public partial class @Player_controls: IInputActionCollection2, IDisposable
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
+            @ChangeWeapon1.started -= instance.OnChangeWeapon1;
+            @ChangeWeapon1.performed -= instance.OnChangeWeapon1;
+            @ChangeWeapon1.canceled -= instance.OnChangeWeapon1;
             @Heal.started -= instance.OnHeal;
             @Heal.performed -= instance.OnHeal;
             @Heal.canceled -= instance.OnHeal;
+            @upgrade.started -= instance.OnUpgrade;
+            @upgrade.performed -= instance.OnUpgrade;
+            @upgrade.canceled -= instance.OnUpgrade;
         }
 
         /// <summary>
@@ -566,11 +630,25 @@ public partial class @Player_controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnReload(InputAction.CallbackContext context);
         /// <summary>
+        /// Method invoked when associated input action "ChangeWeapon1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChangeWeapon1(InputAction.CallbackContext context);
+        /// <summary>
         /// Method invoked when associated input action "Heal" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHeal(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "upgrade" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUpgrade(InputAction.CallbackContext context);
     }
 }
