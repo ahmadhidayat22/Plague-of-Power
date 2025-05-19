@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponPrefab: {fileID: 0}
   weaponName: Pistol
   weaponSprite: {fileID: 21300000, guid: 1942075b710eb18438ba8efd360faa64, type: 3}
+  UIWeaponSprite: {fileID: -973813329046930543, guid: 6c038eb7bf803cc4c904a4b1b61c50f1, type: 3}
   bulletPrefab: {fileID: 7189960559569253356, guid: aedc3891ddd740c4da982d52457a4de2, type: 3}
   fireRate: 0.6
   maxAmmo: 10
@@ -23,4 +24,4 @@ MonoBehaviour:
   animationShootName: Shoot
   animatorController: {fileID: 9100000, guid: c21b718c7821da24f9b3785c2599d3e1, type: 2}
   hasInfinityAmmo: 1
-  damage: 2
+  damage: 4

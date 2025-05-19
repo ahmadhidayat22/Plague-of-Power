@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     private float healCooldown = 5f;
     private float nextHealTime = 0f;
 
-    public int GetCoin { get { return coinCounter; } }
+    public int GetCoin { get { return coinCounter; } set { coinCounter = value; } }
     public int GetGems { get { return gemsCounter; }}
     public int GetMedkit { get { return medkitCounter; }}
     public float getCurrentHealth { get { return currentHealth; }}
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
         gemsCounter = PlayerPrefs.HasKey("Gems") ? PlayerPrefs.GetInt("Gems") : 0;
 
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+   
     private void OnEnable()
     {
         playerControls.Enable();
@@ -230,18 +230,22 @@ public class Player : MonoBehaviour
     { 
         if(collision.CompareTag("Coin") && collision.gameObject.activeSelf )
         {
-            collision.gameObject.SetActive(false);
-            coinCounter +=1;
+            // collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
+            coinCounter += Random.Range(1, 4);
         }
         if(collision.CompareTag("Gems") && collision.gameObject.activeSelf )
         {
-            collision.gameObject.SetActive(false);
-            gemsCounter +=1;
+            // collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
+
+            gemsCounter += Random.Range(1, 3);
         }
         if ( collision.CompareTag("Medkit") && collision.gameObject.activeSelf)
         {
+            Destroy(collision.gameObject);
            
-            collision.gameObject.SetActive(false);
+            // collision.gameObject.SetActive(false);
             medkitCounter += 1;
         }
     }

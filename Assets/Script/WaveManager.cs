@@ -18,7 +18,7 @@ public class WaveManager : MonoBehaviour
     private int currentWave = 0;
     private bool isSpawning = false;
     private bool waitingNextWave = false;
-
+    public WeaponUpgradeUI weaponUpgradeUI;
     public GameObject WavePanel;       
     
     private TMP_Text waveText;
@@ -47,6 +47,9 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator HandleWave()
     {
+        
+        
+        
         isSpawning = true;
 
         // Tampilkan panel dan teks wave
@@ -55,14 +58,20 @@ public class WaveManager : MonoBehaviour
             WavePanel.SetActive(true);
             waveText.text = "Wave " + (currentWave + 1);
         }
-
+        
+        
+       
         Debug.Log("Wave : " + (currentWave + 1));
 
         yield return new WaitForSeconds(2f); // durasi tampilnya panel wave
+        if (currentWave % 2 == 0 && currentWave != 0)
+        {
+            weaponUpgradeUI.OpenUpgradeUI();
 
+        }
         if (WavePanel != null)
         {
-            WavePanel.SetActive(false); // sembunyikan panel lagi
+            WavePanel.SetActive(false);
         }
 
         // Mulai spawn musuh
@@ -78,5 +87,6 @@ public class WaveManager : MonoBehaviour
             currentWave++;
             waitingNextWave = false;
         }
+        
     }
 }

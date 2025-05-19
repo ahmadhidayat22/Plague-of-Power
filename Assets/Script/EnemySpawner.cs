@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public float spawnInterval = 3f;
+    private float spawnInterval = 3f;
     public float spawnDistanceFromCamera = 2f; 
     private Camera mainCamera;
 

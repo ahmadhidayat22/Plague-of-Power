@@ -7,6 +7,7 @@ public class Weapon : ScriptableObject
     public GameObject weaponPrefab;
     public string weaponName;
     public Sprite weaponSprite;
+    public Sprite UIWeaponSprite;
     public GameObject bulletPrefab;
     public float fireRate;
     public int maxAmmo;

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Ak-47
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 0}
-  weaponName: Pistol
+  weaponName: Ak_47
   weaponSprite: {fileID: -6843989447176842366, guid: d695ee33041c9a44186ae1748a0fb945, type: 3}
+  UIWeaponSprite: {fileID: -7696524430383623509, guid: 0f5b7eb88bdf00d478a8f701715fe0c0, type: 3}
   bulletPrefab: {fileID: 7189960559569253356, guid: aedc3891ddd740c4da982d52457a4de2, type: 3}
-  fireRate: 0.3
+  fireRate: 0.35
   maxAmmo: 30
   totalAmmo: 100
   bulletSpeed: 28
