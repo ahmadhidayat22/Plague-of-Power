@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     private int coinCounter = 0;
     private int gemsCounter = 0;
     public int medkitCounter = 0;
-    private float healAmountFromMedkit = 2f;
+    private float healAmountFromMedkit = 30f;
     private float healCooldown = 5f;
     private float nextHealTime = 0f;
 
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
     public float getMaxHealth { get { return maxHealth; }}
 
     public float setMaxhealth { set { maxHealth = value; } }
-    
+    public InGameUI inGameUI;
 
     public GameObject GameOverMenu;
     private void Awake()
@@ -59,6 +59,8 @@ public class Player : MonoBehaviour
         playerControls.Combat.Heal.performed += ctx => Heal(healAmountFromMedkit);
         playerControls.Combat.ChangeWeapon1.performed += ctx => weaponManager.NextWeapon();
         playerControls.Combat.upgrade.performed += ctx => weaponManager.UpgradeCurrentWeapon(5f);
+        playerControls.Other.PauseMenu.performed += ctx => inGameUI.Action("Pause");
+
 
         coinCounter = PlayerPrefs.HasKey("Coin") ? PlayerPrefs.GetInt("Coin") : 0;
         gemsCounter = PlayerPrefs.HasKey("Gems") ? PlayerPrefs.GetInt("Gems") : 0;
@@ -224,6 +226,7 @@ public class Player : MonoBehaviour
         // Tambahkan animasi atau efek di sini jika perlu
         GameOverMenu.SetActive(true);
         Destroy(gameObject);
+        // gameObject.SetActive(false); // pakai ini kalo mau respawn lagi
     }
 
     void OnTriggerEnter2D(Collider2D collision)

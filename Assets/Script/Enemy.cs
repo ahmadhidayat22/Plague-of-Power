@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     float distance;
     [SerializeField] FloatingHealthBar healthBar;
-    [SerializeField] GameObject canvasHealthBar;
+    [SerializeField] public GameObject canvasHealthBar;
     public float attackCooldown = 2f;
     public int attackDamage = 6;
     private bool canAttack = true;
@@ -175,16 +175,16 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Bullet"))
-        {
-            Bullet bullet = collision.GetComponent<Bullet>();
-            if (bullet != null)
-            {
-                canvasHealthBar.SetActive(true);
-                TakeDamage(bullet.damage);
-                // Destroy(collision.gameObject);
-            }
-        }
+        // if (collision.CompareTag("Bullet"))
+        // {
+        //     Bullet bullet = collision.GetComponent<Bullet>();
+        //     if (bullet != null)
+        //     {
+        //         canvasHealthBar.SetActive(true);
+        //         TakeDamage(bullet.damage);
+        //         // Destroy(collision.gameObject);
+        //     }
+        // }
         
         
     }

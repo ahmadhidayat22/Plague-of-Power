@@ -39,9 +39,11 @@ public class GunShoot : MonoBehaviour
     private Vector3 originalLocalPosition;
     public float recoilDistance = 0.08f;
     public float recoilDuration = 0.05f;
+    public WeaponManager weaponManager;
 
     private void Awake()
     {
+        // weaponManager = GetComponent<WeaponManager>();
         gunSpriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         controls = new Player_controls();
@@ -71,7 +73,7 @@ public class GunShoot : MonoBehaviour
 
         originalLocalPosition = transform.parent.localPosition;
         gunSpriteRenderer.sprite = gunSprite;
-    
+
     }
     
 
@@ -86,15 +88,20 @@ public class GunShoot : MonoBehaviour
 
         // ammoText = currentAmmo + " / " + totalAmmo;
     }
+    public void setCurrentAmmo()
+    {
+        currentAmmo = maxAmmo;
+
+    }
 
     private void Update()
     {
         gunSpriteRenderer.sprite = gunSprite;
-       
+
         // if (isReloading) return;
         if (controls.Combat.Shoot.IsPressed())
         {
-            OnShoot(); 
+            OnShoot();
         }
 
         ammoText = currentAmmo + " / " + totalAmmo;
@@ -151,6 +158,7 @@ public class GunShoot : MonoBehaviour
             Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
             float angle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg;
             bullet.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            audioManager.PlaySFX(audioManager.shoot);
 
             // if (animator != null && !string.IsNullOrEmpty(animationWeapon))
             // {
@@ -164,8 +172,9 @@ public class GunShoot : MonoBehaviour
             {
                 rbBullet.linearVelocity = shootDir * bulletSpeed;
             }
-
             currentAmmo--;
+            weaponManager.weaponCurrentAmmos[weaponManager.currentWeaponIndex] = currentAmmo;
+
             StartCoroutine(FlashEffect());
 
             if (cinemachineShake != null)
@@ -225,7 +234,7 @@ public class GunShoot : MonoBehaviour
         isReloading = true;
         Debug.Log("Reloading...");
         // animator.SetTrigger("Reload"); // uncomment if you have reload animation
-        // audioManager.PlaySFX(audioManager.reload);
+        audioManager.PlaySFX(audioManager.reload);
 
         yield return new WaitForSeconds(reloadTime);
 

@@ -15,6 +15,7 @@ public class CoinAndGemGUI : MonoBehaviour
     {
         if (player != null)
         {
+            // coinText.text =  PlayerPrefs.GetInt("Coin").ToString();
             coinText.text =  player.GetCoin.ToString();
             gemsText.text =  player.GetGems.ToString();
             ammoText.text = playerWeapon.ammoText.ToString();

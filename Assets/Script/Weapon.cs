@@ -18,4 +18,7 @@ public class Weapon : ScriptableObject
     public bool hasInfinityAmmo;
     public int damage;
 
+    public bool isShouldBuy;
+    
+
 }

@@ -8,7 +8,17 @@ public class CursorManager : MonoBehaviour
 
     void Start()
     {
+        setCustomCursor();
+    }
+    public void setCustomCursor()
+    {
         Vector2 hotspot = new Vector2(cursorTexture.width / 2f, cursorTexture.height / 2f);
+
         Cursor.SetCursor(cursorTexture, hotspot, cursorMode);
+
+    }
+    public void SetDefaultCursor()
+    {
+        Cursor.SetCursor(null, Vector2.zero, cursorMode);
     }
 }

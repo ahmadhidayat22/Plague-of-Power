@@ -15,6 +15,7 @@ public class WeaponManager : MonoBehaviour
     public SpriteRenderer gunSpriteRenderer;
     private Player_controls controls;
       
+    public int[] weaponCurrentAmmos;
 
     // private void Start()
     // {
@@ -23,13 +24,15 @@ public class WeaponManager : MonoBehaviour
     void Awake()
     {
         weaponLevels = new int[allWeapons.Length];
+        weaponCurrentAmmos = new int[allWeapons.Length];
         for (int i = 0; i < weaponLevels.Length; i++)
         {
             weaponLevels[i] = 1; // default semua level senjata = 1
+            weaponCurrentAmmos[i] = allWeapons[i].maxAmmo;
         }
 
         EquipWeapon(currentWeaponIndex);
-       
+        
         
     }
     public void EquipWeapon(int index)
@@ -50,8 +53,10 @@ public class WeaponManager : MonoBehaviour
         gunShoot.maxAmmo = CurrentWeapon.maxAmmo + (levelData?.extraMaxAmmo ?? 0);
         gunShoot.totalAmmo = CurrentWeapon.totalAmmo ;
         gunShoot.bulletSpeed = CurrentWeapon.bulletSpeed * (levelData?.bulletSpeedMultiplier ?? 1f);
-        gunShoot.currentAmmo = CurrentWeapon.maxAmmo;
-        gunShoot.currentAmmo = gunShoot.maxAmmo;
+        // gunShoot.currentAmmo = CurrentWeapon.maxAmmo;
+        // gunShoot.currentAmmo = gunShoot.maxAmmo;
+        gunShoot.currentAmmo = weaponCurrentAmmos[index]; // ambil ammo terakhir yang tersisa
+
         gunShoot.gunSprite = CurrentWeapon.weaponSprite;
         gunShoot.hasGunInfinityAmmo = CurrentWeapon.hasInfinityAmmo;
         gunShoot.gunDamage = CurrentWeapon.damage + (levelData?.extraDamage ?? 0);

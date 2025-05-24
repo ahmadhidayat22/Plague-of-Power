@@ -25,3 +25,4 @@ MonoBehaviour:
   animatorController: {fileID: 9100000, guid: cbbe649405b41ef40a26255a28560502, type: 2}
   hasInfinityAmmo: 0
   damage: 5
+  isShouldBuy: 1
