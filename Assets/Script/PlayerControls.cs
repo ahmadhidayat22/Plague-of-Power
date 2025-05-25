@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     private float nextHealTime = 0f;
 
     public int GetCoin { get { return coinCounter; } set { coinCounter = value; } }
-    public int GetGems { get { return gemsCounter; }}
+    public int GetGems { get { return gemsCounter; } set { gemsCounter = value; } } 
     public int GetMedkit { get { return medkitCounter; }}
     public float getCurrentHealth { get { return currentHealth; }}
     public float getMaxHealth { get { return maxHealth; }}

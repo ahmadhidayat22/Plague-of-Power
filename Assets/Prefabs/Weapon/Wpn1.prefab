@@ -149,12 +149,12 @@ GameObject:
   - component: {fileID: 5390424749094970116}
   - component: {fileID: 5124274565839479234}
   m_Layer: 5
-  m_Name: btnPlayMap2
+  m_Name: btnBuy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7156441348052043103
 RectTransform:
   m_ObjectHideFlags: 0
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 6874800690826055027}
   - component: {fileID: 8883562053293532209}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: GemsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1688,7 +1688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: RELOAD SPD
+  m_text: BULLET SPD
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4aee4da70f81bf84fa0a208d035afe3e, type: 2}
   m_sharedMaterial: {fileID: -3175684273123482600, guid: 4aee4da70f81bf84fa0a208d035afe3e, type: 2}

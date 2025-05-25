@@ -19,6 +19,6 @@ public class Weapon : ScriptableObject
     public int damage;
 
     public bool isShouldBuy;
-    
+    public int costBuy;
 
 }

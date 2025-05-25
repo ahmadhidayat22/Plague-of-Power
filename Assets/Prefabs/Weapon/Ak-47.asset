@@ -26,3 +26,4 @@ MonoBehaviour:
   hasInfinityAmmo: 0
   damage: 5
   isShouldBuy: 1
+  costBuy: 50

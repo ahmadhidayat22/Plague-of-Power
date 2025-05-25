@@ -11,13 +11,12 @@ public class WeaponUpgradeUI : MonoBehaviour
     public GameObject weaponUpgradePanel;
     public CursorManager cursorManager;
     public TextMeshProUGUI coinText;
+    public TextMeshProUGUI gemsText;
 
     public Player player;
 
     void Start()
     {
-        player = GetComponent<Player>();
-
         CreateWeaponUI();
     }
     // TODO: mainkan animasi ketika panel upgrade dibuka / ditutup
@@ -38,16 +37,19 @@ public class WeaponUpgradeUI : MonoBehaviour
     void CreateWeaponUI()
     {
         int coinPlayer = PlayerPrefs.GetInt("Coin");
+        int gemsPlayer = PlayerPrefs.GetInt("Gems");
+
+        gemsText.text = gemsPlayer.ToString();
         coinText.text = coinPlayer.ToString();
         for (int i = 0; i < weaponManager.allWeapons.Length; i++)
         {
-            
+
             int weaponIndex = i;
             Weapon weapon = weaponManager.allWeapons[i];
 
             GameObject item = Instantiate(weaponItemPrefab, weaponListParent);
             item.SetActive(true);
-            
+
 
             // Set Image
             Image weaponImage = item.transform.Find("Image").GetComponent<Image>();
@@ -67,19 +69,50 @@ public class WeaponUpgradeUI : MonoBehaviour
             var levelData = upgradeData.GetUpgradeData(currentLevel);
 
             Button upgradeBtn = item.transform.Find("btnUpgrade").GetComponent<Button>();
+            Button buyBtn = item.transform.Find("btnBuy").GetComponent<Button>();
+            if (weapon.isShouldBuy)
+            {
+
+                buyBtn.gameObject.SetActive(true);
+                upgradeBtn.gameObject.SetActive(false);
+
+            }
+            else
+            {
+                buyBtn.gameObject.SetActive(false);
+                upgradeBtn.gameObject.SetActive(true);
+            }
+
+
             if (levelData != null)
             {
+                if (weapon.isShouldBuy)
+                {
+                    TextMeshProUGUI costBuy = item.transform.Find("btnBuy/GemsText").GetComponent<TextMeshProUGUI>();
+                    // FIXME : fix stats when weapon "isShouldBuy"
+                    stat1.text = $"{weapon.fireRate} ";
+                    stat2.text = $"{weapon.damage} ";
+                    stat3.text = $"{weapon.maxAmmo} ";
+                    stat4.text = $"{weapon.bulletSpeed} ";
+                    costBuy.text = $"{weapon.costBuy}";
+                }
+                else
+                {
+                    
                 stat1.text = $"{levelData.fireRatePercent}% +";
                 stat2.text = $"{levelData.extraDamage} +";
                 stat3.text = $"{levelData.extraMaxAmmo} +";
                 stat4.text = $"{levelData.bulletSpeedMultiplier} +";
                 costUpgrade.text = $"{levelData.costCoin}";
+                }
             }
-           if (upgradeData.IsMaxLevel(currentLevel) || levelData.costCoin > coinPlayer)
+            if (upgradeData.IsMaxLevel(currentLevel) || levelData.costCoin > coinPlayer)
             {
                 upgradeBtn.interactable = false;
-                
+
             }
+           
+
             // Upgrade Button
             upgradeBtn.onClick.AddListener(() =>
             {
@@ -90,12 +123,20 @@ public class WeaponUpgradeUI : MonoBehaviour
                 RefreshUI(); // update tampilan
             });
 
-            
+            // Buy Button
+            buyBtn.onClick.AddListener(() =>
+            {
+                gemsPlayer -= weapon.costBuy;
+                PlayerPrefs.SetInt("Gems", gemsPlayer);
+                player.GetGems = gemsPlayer;
+
+                weaponManager.BuyWeapon(weaponIndex);
+                RefreshUI();
+            });
 
         }
         
     }
-
     void RefreshUI()
     {
        

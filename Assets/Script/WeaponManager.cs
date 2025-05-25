@@ -16,6 +16,7 @@ public class WeaponManager : MonoBehaviour
     private Player_controls controls;
       
     public int[] weaponCurrentAmmos;
+    public int[] weaponTotalAmmos;
 
     // private void Start()
     // {
@@ -25,10 +26,13 @@ public class WeaponManager : MonoBehaviour
     {
         weaponLevels = new int[allWeapons.Length];
         weaponCurrentAmmos = new int[allWeapons.Length];
+        weaponTotalAmmos = new int[allWeapons.Length];
+
         for (int i = 0; i < weaponLevels.Length; i++)
         {
             weaponLevels[i] = 1; // default semua level senjata = 1
             weaponCurrentAmmos[i] = allWeapons[i].maxAmmo;
+            weaponTotalAmmos[i] = allWeapons[i].totalAmmo;
         }
 
         EquipWeapon(currentWeaponIndex);
@@ -41,21 +45,21 @@ public class WeaponManager : MonoBehaviour
 
         CurrentWeapon = allWeapons[index];
         int currentLevel = weaponLevels[index];
+        if(CurrentWeapon.isShouldBuy) return;
 
          // Cari UpgradeData sesuai nama senjata
         UpgradeWeaponData upgradeData = GetUpgradeData(CurrentWeapon.weaponName);
         var levelData = upgradeData?.GetUpgradeData(currentLevel);
-
-        CurrentWeapon = allWeapons[index];
         gunShoot.animationWeapon = CurrentWeapon.animationShootName;
         gunShoot.bulletPrefab = CurrentWeapon.bulletPrefab;
         gunShoot.fireRate = (float)(CurrentWeapon.fireRate * 1f - (levelData?.fireRatePercent / 100f));
         gunShoot.maxAmmo = CurrentWeapon.maxAmmo + (levelData?.extraMaxAmmo ?? 0);
-        gunShoot.totalAmmo = CurrentWeapon.totalAmmo ;
+        // gunShoot.totalAmmo = CurrentWeapon.totalAmmo ;
         gunShoot.bulletSpeed = CurrentWeapon.bulletSpeed * (levelData?.bulletSpeedMultiplier ?? 1f);
         // gunShoot.currentAmmo = CurrentWeapon.maxAmmo;
         // gunShoot.currentAmmo = gunShoot.maxAmmo;
         gunShoot.currentAmmo = weaponCurrentAmmos[index]; // ambil ammo terakhir yang tersisa
+        gunShoot.totalAmmo = weaponTotalAmmos[index] ;
 
         gunShoot.gunSprite = CurrentWeapon.weaponSprite;
         gunShoot.hasGunInfinityAmmo = CurrentWeapon.hasInfinityAmmo;
@@ -66,10 +70,6 @@ public class WeaponManager : MonoBehaviour
         {
             gunShoot.animator.runtimeAnimatorController = CurrentWeapon.animatorController;
         }
-        // if (CurrentWeapon.weaponSprite != null && gunSpriteRenderer != null)
-        // {
-        //     gunSpriteRenderer.sprite = CurrentWeapon.weaponSprite;
-        // }
     }
     public void UpgradeWeapon(int index)
     {
@@ -97,7 +97,7 @@ public class WeaponManager : MonoBehaviour
         
         gunShoot.fireRate *= 1f - (fireRatePercent / 100f);
         gunShoot.bulletSpeed *= bulletSpeedMultiplier;
-        Debug.Log(gunShoot.fireRate);
+        // Debug.Log(gunShoot.fireRate);
 
         // gunShoot.maxAmmo += extraAmmo;
         // gunShoot.currentAmmo = gunShoot.maxAmmo;
@@ -107,6 +107,13 @@ public class WeaponManager : MonoBehaviour
     }
 
 
+    public void BuyWeapon(int index)
+    {
+        if (index < 0 || index >= weaponLevels.Length) return;
+        CurrentWeapon = allWeapons[index];
+        CurrentWeapon.isShouldBuy = false;
+
+    }
     public void NextWeapon()
     {
         // Debug.Log("change weapon");

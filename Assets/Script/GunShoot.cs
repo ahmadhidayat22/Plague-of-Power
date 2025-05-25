@@ -243,6 +243,7 @@ public class GunShoot : MonoBehaviour
         if (!hasGunInfinityAmmo)
         {
             totalAmmo -= ammoToReload;
+            weaponManager.weaponTotalAmmos[weaponManager.currentWeaponIndex] = totalAmmo;
             
         }
 
