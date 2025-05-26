@@ -8533,7 +8533,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UPGRADE SENJATA
+  m_text: UPGRADE WEAPON
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
   m_sharedMaterial: {fileID: 1725155287645012601, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
@@ -9979,7 +9979,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UPGRADE SENJATA
+  m_text: UPGRADE WEAPON
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
   m_sharedMaterial: {fileID: 1725155287645012601, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
@@ -12211,6 +12211,8 @@ MonoBehaviour:
   background: {fileID: 8300000, guid: bdb37d7fe4497ee47bb3027f32a22de1, type: 3}
   shoot: {fileID: 8300000, guid: 13f72f48fa17e434d9a44a3775664d70, type: 3}
   reload: {fileID: 8300000, guid: 24bce523ca8fa014696e4cf063bff5b0, type: 3}
+  menu_hoover: {fileID: 0}
+  menu_select: {fileID: 0}
 --- !u!1 &1357517250
 GameObject:
   m_ObjectHideFlags: 0
@@ -15214,7 +15216,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UPGRADE SENJATA
+  m_text: UPGRADE WEAPON
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
   m_sharedMaterial: {fileID: 1725155287645012601, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
@@ -15622,7 +15624,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: JUDUL MAP 3
+  m_text: MAP 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
   m_sharedMaterial: {fileID: 1725155287645012601, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
@@ -16166,7 +16168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UPGRADE SENJATA
+  m_text: UPGRADE WEAPON
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
   m_sharedMaterial: {fileID: 1725155287645012601, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
@@ -17035,7 +17037,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: JUDUL MAP 1
+  m_text: MAP 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
   m_sharedMaterial: {fileID: 1725155287645012601, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
@@ -17383,7 +17385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: JUDUL MAP 2
+  m_text: MAP 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
   m_sharedMaterial: {fileID: 1725155287645012601, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
