@@ -20,15 +20,19 @@ public class WaveManager : MonoBehaviour
     private bool waitingNextWave = false;
     public WeaponUpgradeUI weaponUpgradeUI;
     public GameObject WavePanel;       
+    public GameObject GuidesPanel;       
     
     private TMP_Text waveText;
+    private bool isShowGudiesPanel;
      
     private void Start()
     {
+        isShowGudiesPanel = false;
         if (WavePanel != null)
         {
             waveText = WavePanel.GetComponentInChildren<TMP_Text>();
-            WavePanel.SetActive(false); // sembunyikan panel saat awal
+            WavePanel.SetActive(false);
+            GuidesPanel.SetActive(false);
         }
 
         StartCoroutine(HandleWave());
@@ -47,21 +51,29 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator HandleWave()
     {
-        
-        
-        
         isSpawning = true;
+        if (!isShowGudiesPanel)
+        {
+
+            GuidesPanel.SetActive(true);
+            yield return new WaitForSeconds(5f);
+            GuidesPanel.GetComponent<Animator>().SetTrigger("Close");
+            yield return new WaitForSeconds(2f);
+            GuidesPanel.SetActive(false);
+            isShowGudiesPanel = true;
+        }
 
         // Tampilkan panel dan teks wave
         if (WavePanel != null && waveText != null)
         {
+            
             WavePanel.SetActive(true);
             waveText.text = "Wave " + (currentWave + 1);
         }
         
         
        
-        Debug.Log("Wave : " + (currentWave + 1));
+        // Debug.Log("Wave : " + (currentWave + 1));
 
         yield return new WaitForSeconds(2f); // durasi tampilnya panel wave
         if (currentWave % 2 == 0 && currentWave != 0)
@@ -75,7 +87,7 @@ public class WaveManager : MonoBehaviour
         }
 
         // Mulai spawn musuh
-        yield return StartCoroutine(spawner.SpawnEnemy(waves[currentWave].enemyCount, waves[currentWave].spawnInterval));
+        yield return StartCoroutine(spawner.SpawnEnemy(waves[currentWave].enemyCount, waves[currentWave].spawnInterval, currentWave));
 
         isSpawning = false;
 

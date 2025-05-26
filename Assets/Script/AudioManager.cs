@@ -11,8 +11,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip background;
     public AudioClip shoot;
     public AudioClip reload;
+    public AudioClip heal;
     public AudioClip menu_hoover;
     public AudioClip menu_select;
+
 
     // private void Start()
     // {

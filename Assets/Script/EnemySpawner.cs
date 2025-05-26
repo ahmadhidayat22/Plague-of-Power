@@ -5,7 +5,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
     private float spawnInterval = 3f;
-    public float spawnDistanceFromCamera = 2f; 
+    public float spawnDistanceFromCamera = 2f;
     private Camera mainCamera;
 
     private void Start()
@@ -19,12 +19,18 @@ public class EnemySpawner : MonoBehaviour
     //     Vector2 spawnPos = GetRandomPositionOutsideCamera();
     //     Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
     // }
-    public IEnumerator SpawnEnemy(int count, float interval)
+    public IEnumerator SpawnEnemy(int count, float interval, int waveNumber)
     {
         for (int i = 0; i < count; i++)
         {
             Vector2 spawnPos = GetRandomPositionOutsideCamera();
-            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            GameObject enemyObj = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+
+            Enemy enemy = enemyObj.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.ScaleStats(waveNumber); // ← Terapkan scaling
+            }
             yield return new WaitForSeconds(interval);
         }
     }

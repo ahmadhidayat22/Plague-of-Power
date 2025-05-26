@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public float moveSpeed = 3f;
-    public float stopDistance = 3f; 
+    public float stopDistance = 3f;
     private Transform player;
-   
+
     private Rigidbody2D rb;
     private Vector2 movement;
 
@@ -27,19 +27,20 @@ public class Enemy : MonoBehaviour
     private Player playerHealth;
 
 
-     private WaveManager waveManager;
+    private WaveManager waveManager;
     // loot items;
     [Header("Loot")]
     public List<LootItem> lootTable = new List<LootItem>();
+    [SerializeField] Transform pfDamagePopup;
 
 
     private void Start()
     {
-        
+
         healthBar = GetComponentInChildren<FloatingHealthBar>();
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
-        
+
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
@@ -51,8 +52,8 @@ public class Enemy : MonoBehaviour
             player = playerObj.transform;
             playerHealth = playerObj.GetComponent<Player>();
         }
-        
-       
+
+
         if (player == null || playerHealth == null)
         {
             Debug.LogWarning("Player not found!");
@@ -64,40 +65,44 @@ public class Enemy : MonoBehaviour
 
         Vector2 direction = (player.position - transform.position);
         distance = direction.magnitude;
-       
-        if ( distance >= stopDistance)
+
+        if (distance >= stopDistance)
         {
             movement = direction.normalized;
-           
+
             // Optional: Flip arah hadap enemy (menghadap ke player)
-            if (direction.x > 0.1f){
+            if (direction.x > 0.1f)
+            {
 
                 transform.localScale = new Vector3(-2.5f, 2.5f, 2.5f); // Menghadap kanan
-                canvasHealthBar.transform.localScale = new Vector3(-1f,1f,1f);
+                canvasHealthBar.transform.localScale = new Vector3(-1f, 1f, 1f);
             }
-            else if (direction.x < -0.1f){
+            else if (direction.x < -0.1f)
+            {
 
                 transform.localScale = new Vector3(2.5f, 2.5f, 2.5f); // Menghadap kiri
-                canvasHealthBar.transform.localScale = new Vector3(1f,1f,1f);
+                canvasHealthBar.transform.localScale = new Vector3(1f, 1f, 1f);
             }
 
-               
+
         }
         else
         {
             movement = Vector2.zero;
         }
-        
-        if(distance <= stopDistance && canAttack)
+
+        if (distance <= stopDistance && canAttack)
         {
             StartCoroutine(Attack());
-            
-        }else{
+
+        }
+        else
+        {
             animator.SetBool("isAttack", false);
 
         }
-        
-       
+
+
 
     }
 
@@ -105,14 +110,14 @@ public class Enemy : MonoBehaviour
     {
         canAttack = false;
         animator.SetBool("isAttack", true);
-      
-        Debug.Log("attack player");
-         if(playerHealth != null)
+
+        // Debug.Log("attack player");
+        if (playerHealth != null)
         {
             playerHealth.TakeDamage(attackDamage);
             // Debug.Log("Enemy attacked player! Remaining health: " + playerHealth.currentHealth);
         }
-        
+
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
 
@@ -126,17 +131,35 @@ public class Enemy : MonoBehaviour
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         }
     }
-    
+
     public void TakeDamage(int damage)
     {
+        // DamagePopup.Create(pfDamagePopup, transform.position, damage);
+
         Debug.Log("Enemy HP: " + currentHealth);
         currentHealth -= damage;
         Debug.Log("Enemy Hit HP: " + currentHealth);
+        animator.SetTrigger("onHit");
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         if (currentHealth <= 0)
         {
             Die();
         }
+    }
+
+    public void ScaleStats(int waveNumber)
+    {
+
+        float healthMultiplier = 1f + Random.Range(0f, 0.9f) * waveNumber;  // 5% tambahan tiap wave
+        float damageMultiplier = 1f + Random.Range(0f, 0.9f) * waveNumber;
+
+        maxHealth = Mathf.CeilToInt(maxHealth * healthMultiplier);
+        currentHealth = maxHealth;
+
+        attackDamage = Mathf.CeilToInt(attackDamage * damageMultiplier);
+
+        if (healthBar != null)
+            healthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
 
 
@@ -145,9 +168,9 @@ public class Enemy : MonoBehaviour
         // waveManager.OnEnemyKilled();
         // spawn item yang di drop enemy
         // Tambahkan animasi atau efek di sini jika perlu
-        foreach(LootItem lootItem in lootTable)
+        foreach (LootItem lootItem in lootTable)
         {
-            if(Random.Range(0f, 100f) < lootItem.dropChance)
+            if (Random.Range(0f, 100f) < lootItem.dropChance)
             {
                 InstantiateLoot(lootItem.itemPrefab);
             }
@@ -158,17 +181,17 @@ public class Enemy : MonoBehaviour
 
     void InstantiateLoot(GameObject loot)
     {
-        if(loot)
+        if (loot)
         {
             // Jarak offset maksimum dari posisi enemy
-        float dropRadius = 0.5f; // Bisa diatur sesuai keinginan
+            float dropRadius = 0.5f; // Bisa diatur sesuai keinginan
 
-        // Offset acak di sekitar enemy (dalam lingkaran)
-        Vector2 randomOffset = Random.insideUnitCircle * dropRadius;
+            // Offset acak di sekitar enemy (dalam lingkaran)
+            Vector2 randomOffset = Random.insideUnitCircle * dropRadius;
 
-        Vector3 dropPosition = transform.position + (Vector3)randomOffset;
+            Vector3 dropPosition = transform.position + (Vector3)randomOffset;
 
-        GameObject droppedLoot = Instantiate(loot, dropPosition, Quaternion.identity);
+            GameObject droppedLoot = Instantiate(loot, dropPosition, Quaternion.identity);
 
             // droppedLoot.GetComponent<SpriteRenderer>().color = Color.red;
         }
@@ -185,8 +208,8 @@ public class Enemy : MonoBehaviour
         //         // Destroy(collision.gameObject);
         //     }
         // }
-        
-        
+
+
     }
 
 

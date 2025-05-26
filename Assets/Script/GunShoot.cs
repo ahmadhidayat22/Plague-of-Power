@@ -1,6 +1,8 @@
-using System;
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class GunShoot : MonoBehaviour
 {
@@ -18,15 +20,15 @@ public class GunShoot : MonoBehaviour
     private float angle;
 
     public GameObject bulletPrefab;
-    public float bulletSpeed ;
-    public float fireRate ;
+    public float bulletSpeed;
+    public float fireRate;
     private float nextFireTime = 0f;
 
     private CinemachineShake cinemachineShake;
-    
+
 
     [Header("Ammo Settings")]
-    public int maxAmmo ;
+    public int maxAmmo;
     public int currentAmmo;
     public int totalAmmo;
     public float reloadTime = 2f;
@@ -43,6 +45,7 @@ public class GunShoot : MonoBehaviour
 
     private void Awake()
     {
+
         // weaponManager = GetComponent<WeaponManager>();
         gunSpriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -61,7 +64,23 @@ public class GunShoot : MonoBehaviour
         {
             Debug.LogError("AudioManager component not found on the tagged object!");
         }
-        Debug.Log(CinemachineShake.Instance);
+
+
+
+        originalLocalPosition = transform.parent.localPosition;
+        gunSpriteRenderer.sprite = gunSprite;
+
+    }
+
+
+    private void OnEnable() => controls.Enable();
+    private void OnDisable() => controls.Disable();
+
+    private void Start()
+    {
+        currentAmmo = maxAmmo;
+
+        ammoText = currentAmmo + " / " + totalAmmo;
         if (CinemachineShake.Instance != null)
         {
             cinemachineShake = CinemachineShake.Instance;
@@ -70,22 +89,6 @@ public class GunShoot : MonoBehaviour
         {
             Debug.LogWarning("Cinemachine Shake instance not found!");
         }
-
-        originalLocalPosition = transform.parent.localPosition;
-        gunSpriteRenderer.sprite = gunSprite;
-
-    }
-    
-
-    private void OnEnable() => controls.Enable();
-    private void OnDisable() => controls.Disable();
-
-    private void Start()
-    {
-        currentAmmo = maxAmmo;
-        
-        ammoText = currentAmmo + " / " + totalAmmo;
-
         // ammoText = currentAmmo + " / " + totalAmmo;
     }
     public void setCurrentAmmo()
@@ -97,6 +100,7 @@ public class GunShoot : MonoBehaviour
     private void Update()
     {
         gunSpriteRenderer.sprite = gunSprite;
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // if (isReloading) return;
         if (controls.Combat.Shoot.IsPressed())
@@ -106,7 +110,6 @@ public class GunShoot : MonoBehaviour
 
         ammoText = currentAmmo + " / " + totalAmmo;
 
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = mousePos - (Vector2)transform.position;
         float distanceToMouse = Vector2.Distance(transform.position, mousePos);
 
@@ -116,6 +119,8 @@ public class GunShoot : MonoBehaviour
             FaceMouse();
         }
     }
+
+
 
     void FaceMouse()
     {
@@ -145,6 +150,7 @@ public class GunShoot : MonoBehaviour
         }
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         Vector2 shootDir = (mousePos - (Vector2)ShootPoint.position).normalized;
 
         GameObject bullet = Instantiate(bulletPrefab, ShootPoint.position, Quaternion.identity);
@@ -160,10 +166,6 @@ public class GunShoot : MonoBehaviour
             bullet.transform.rotation = Quaternion.Euler(0f, 0f, angle);
             audioManager.PlaySFX(audioManager.shoot);
 
-            // if (animator != null && !string.IsNullOrEmpty(animationWeapon))
-            // {
-            //     animator.Play(animationWeapon);
-            // }
             StartCoroutine(PlayRecoil());
 
             // transform.position = new Vector3(transform.position.x - 0.08f, transform.position.y, transform.position.z);
@@ -185,9 +187,8 @@ public class GunShoot : MonoBehaviour
             nextFireTime = Time.time + fireRate;
         }
         transform.position = new Vector3(transform.position.x + 0.08f, transform.position.y, transform.position.z);
-        
-    }
 
+    }
     // TODO: Buat recoil berdasarkan angle senjata misal senjata mengarah kebawah maka arah recoil seharusnya keatas.
 
     private IEnumerator PlayRecoil()
@@ -244,7 +245,7 @@ public class GunShoot : MonoBehaviour
         {
             totalAmmo -= ammoToReload;
             weaponManager.weaponTotalAmmos[weaponManager.currentWeaponIndex] = totalAmmo;
-            
+
         }
 
         Debug.Log("Reload complete: " + currentAmmo + " / " + totalAmmo);

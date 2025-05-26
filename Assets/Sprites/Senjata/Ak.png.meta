@@ -116,12 +116,12 @@ TextureImporter:
       name: Ak_0
       rect:
         serializedVersion: 2
-        x: 311
-        y: 322
-        width: 1334
-        height: 448
+        x: 0
+        y: 0
+        width: 2027
+        height: 1192
       alignment: 9
-      pivot: {x: 0.5357139, y: 0.29794773}
+      pivot: {x: 0.5105767, y: 0.42581937}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

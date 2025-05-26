@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 
@@ -34,19 +36,27 @@ public class Player : MonoBehaviour
     private int gemsCounter = 0;
     public int medkitCounter = 0;
     private float healAmountFromMedkit = 30f;
-    private float healCooldown = 5f;
+    public float healCooldown = 5f;
     private float nextHealTime = 0f;
+    [SerializeField] private GameObject healEffectPrefab; // Drag prefab FX Heal ke sini lewat Inspector
+
 
     public int GetCoin { get { return coinCounter; } set { coinCounter = value; } }
-    public int GetGems { get { return gemsCounter; } set { gemsCounter = value; } } 
-    public int GetMedkit { get { return medkitCounter; }}
-    public float getCurrentHealth { get { return currentHealth; }}
-    public float getMaxHealth { get { return maxHealth; }}
+    public int GetGems { get { return gemsCounter; } set { gemsCounter = value; } }
+    public int GetMedkit { get { return medkitCounter; } }
+    public float getCurrentHealth { get { return currentHealth; } }
+    public float getMaxHealth { get { return maxHealth; } }
 
     public float setMaxhealth { set { maxHealth = value; } }
     public InGameUI inGameUI;
 
     public GameObject GameOverMenu;
+    public GUIPlayerUpdater gUIPlayerUpdater;
+    private float nextChangeWeapon = 0f;
+    private float changeWeaponCooldown = 2f;
+    public GameObject weaponIconSkill;
+    AudioManager audioManager;
+
     private void Awake()
     {
         weaponManager = GameObject.FindAnyObjectByType<WeaponManager>();
@@ -57,21 +67,40 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         playerControls.Combat.Heal.performed += ctx => Heal(healAmountFromMedkit);
-        playerControls.Combat.ChangeWeapon1.performed += ctx => weaponManager.NextWeapon();
+        playerControls.Combat.ChangeWeapon1.performed += ctx => changeWeapon();
         playerControls.Combat.upgrade.performed += ctx => weaponManager.UpgradeCurrentWeapon(5f);
         playerControls.Other.PauseMenu.performed += ctx => inGameUI.Action("Pause");
-
+        GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
+        if (audioObj == null)
+        {
+            Debug.LogError("AudioManager object with tag 'Audio' not found!");
+            return;
+        }
+        audioManager = audioObj.GetComponent<AudioManager>();
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager component not found on the tagged object!");
+        }
 
         coinCounter = PlayerPrefs.HasKey("Coin") ? PlayerPrefs.GetInt("Coin") : 0;
         gemsCounter = PlayerPrefs.HasKey("Gems") ? PlayerPrefs.GetInt("Gems") : 0;
 
     }
-   
+    void changeWeapon()
+    {
+        if (Time.time < nextChangeWeapon)
+            return;
+        GUIPlayerUpdater.FindAnyObjectByType<GUIPlayerUpdater>().useWeapon(changeWeaponCooldown);
+        weaponManager.NextWeapon();
+        // weaponIconSkill.GetComponent<Image>().sprite = playerAimWeapon.gunSprite;
+        nextChangeWeapon = Time.time + changeWeaponCooldown;
+    }
+
     private void OnEnable()
     {
         playerControls.Enable();
     }
-    
+
     private void OnDisable()
     {
         playerControls.Disable();
@@ -144,30 +173,33 @@ public class Player : MonoBehaviour
     {
         bool isAimingRight = angle > -75 && angle < 75;
         // Debug.Log("Movement x : "+movement.x+ "; angle :" + angle);
-        if (isAimingRight )
+        if (isAimingRight)
         {
-            if(angle > 45 )
+            if (angle > 45)
             {
                 // ChangeAnimationState(PLAYER_IDLE_BACK);
-                isFacingDown =false;
-            }else{
+                isFacingDown = false;
+            }
+            else
+            {
                 // ChangeAnimationState(PLAYER_IDLE);
-                isFacingDown =true;
+                isFacingDown = true;
             }
             transform.localScale = new Vector3(1, 1, 1);
             gunHolder.localPosition = new Vector3(Mathf.Abs(gunHolder.localPosition.x), gunHolder.localPosition.y, 0);
         }
-        
-        else if (angle > 100 || (angle < -100 && angle > -180 ) )
+
+        else if (angle > 100 || (angle < -100 && angle > -180))
         {
-            if(angle > 120 )
+            if (angle > 120)
             {
                 // ChangeAnimationState(PLAYER_IDLE_BACK);
-                isFacingDown =false;
+                isFacingDown = false;
             }
-            else{
+            else
+            {
                 // ChangeAnimationState(PLAYER_IDLE);
-                isFacingDown =true;
+                isFacingDown = true;
             }
             transform.localScale = new Vector3(-1, 1, 1);
             gunHolder.localPosition = new Vector3(Mathf.Abs(gunHolder.localPosition.x), gunHolder.localPosition.y, 0);
@@ -184,7 +216,7 @@ public class Player : MonoBehaviour
 
     public void Heal(float amount)
     {
-        if( Time.time < nextHealTime )
+        if (Time.time < nextHealTime)
             return;
 
 
@@ -204,8 +236,21 @@ public class Player : MonoBehaviour
             currentHealth += amount;
         }
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
-        medkitCounter --;
+        GUIPlayerUpdater.FindAnyObjectByType<GUIPlayerUpdater>().useHeal(healCooldown);
+        ShowHealEffect(); // Panggil FX Heal
+        medkitCounter--;
         nextHealTime = Time.time + healCooldown;
+    }
+    private void ShowHealEffect()
+    {
+        if (healEffectPrefab != null)
+        {
+            Vector3 playerpos = new Vector3(transform.position.x , transform.position.y + .8f);
+            GameObject fx = Instantiate(healEffectPrefab, playerpos, Quaternion.identity);
+            fx.transform.SetParent(transform); // Opsional: biar ikut posisi player
+            audioManager.PlaySFX(audioManager.heal);
+            Destroy(fx, 1f); // Hancurkan efek setelah 2 detik (atau sesuai durasi animasi)
+        }
     }
 
     public void TakeDamage(float damage)
@@ -213,7 +258,7 @@ public class Player : MonoBehaviour
         currentHealth -= damage;
         Debug.Log("I'm hit! HP: " + currentHealth);
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
-        if(currentHealth <= 0 )
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -230,24 +275,24 @@ public class Player : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision)
-    { 
-        if(collision.CompareTag("Coin") && collision.gameObject.activeSelf )
+    {
+        if (collision.CompareTag("Coin") && collision.gameObject.activeSelf)
         {
             // collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
             coinCounter += Random.Range(1, 4);
         }
-        if(collision.CompareTag("Gems") && collision.gameObject.activeSelf )
+        if (collision.CompareTag("Gems") && collision.gameObject.activeSelf)
         {
             // collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
 
             gemsCounter += Random.Range(1, 3);
         }
-        if ( collision.CompareTag("Medkit") && collision.gameObject.activeSelf)
+        if (collision.CompareTag("Medkit") && collision.gameObject.activeSelf)
         {
             Destroy(collision.gameObject);
-           
+
             // collision.gameObject.SetActive(false);
             medkitCounter += 1;
         }

@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTime: 3
   damage: 1
+  pfDamagePopup: {fileID: 4434034425454848921, guid: 01b44f5f67b24cb4889ad4f2122762bb, type: 3}
 --- !u!212 &1440420859879622755
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -91,8 +92,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 30852179
-  m_SortingLayer: 3
+  m_SortingLayerID: 1316875751
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 8985600147615596786, guid: 88586c46e05bc224f840252c0703a963, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

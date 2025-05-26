@@ -19,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Top
   - 
   - 
   - 
@@ -57,6 +57,9 @@ TagManager:
     locked: 0
   - name: Object
     uniqueID: 30852179
+    locked: 0
+  - name: Top
+    uniqueID: 1316875751
     locked: 0
   m_RenderingLayers:
   - Default
