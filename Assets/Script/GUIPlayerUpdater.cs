@@ -11,6 +11,7 @@ public class GUIPlayerUpdater : MonoBehaviour
     [SerializeField] private TMP_Text ammoText;
     [SerializeField] private TMP_Text medkitText;
     [SerializeField] private TMP_Text HealthText;
+    [SerializeField] private TMP_Text scoreText;
 
     [SerializeField] private GameObject healImage;
     [SerializeField] private GameObject weaponImage;
@@ -24,6 +25,7 @@ public class GUIPlayerUpdater : MonoBehaviour
     private bool isCooldownChangeWeapon = false;
     private WeaponManager weaponManager;
     [SerializeField] private GameObject weaponIconSkill;
+    private float score = 0;
 
     void Start()
     {
@@ -62,6 +64,8 @@ public class GUIPlayerUpdater : MonoBehaviour
             ammoText.text = playerWeapon.ammoText.ToString();
             medkitText.text = player.GetMedkit.ToString();
             HealthText.text = player.getCurrentHealth.ToString() + " / " + player.getMaxHealth.ToString();
+            score += Time.deltaTime;
+            scoreText.text = Mathf.FloorToInt(score).ToString();
         }
 
         if (isCooldownHeal)
@@ -124,4 +128,16 @@ public class GUIPlayerUpdater : MonoBehaviour
             weaponImage.GetComponent<Image>().fillAmount = 1f;
         }
     }
+
+    public float GetSurvivalTime()
+    {
+        return score;
+    }
+
+    public void AddScore(int value)
+    {
+        score += value;
+        scoreText.text = score.ToString();
+    }
+
 }

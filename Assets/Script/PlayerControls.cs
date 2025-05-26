@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     float angle;
 
     [Header("Health Player")]
-    private float maxHealth = 100f;
+    private float maxHealth = 1f;
     private float currentHealth;
     [SerializeField] FloatingHealthBar healthBar;
     Collider2D _lastPointTouched;
@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     public float setMaxhealth { set { maxHealth = value; } }
     public InGameUI inGameUI;
 
+    [SerializeField] private GameOverManager gameOverManager;
     public GameObject GameOverMenu;
     public GUIPlayerUpdater gUIPlayerUpdater;
     private float nextChangeWeapon = 0f;
@@ -265,14 +266,16 @@ public class Player : MonoBehaviour
     }
     void Die()
     {
-        // simpan state jumlah coin dan gems
         PlayerPrefs.SetInt("Coin", coinCounter);
         PlayerPrefs.SetInt("Gems", gemsCounter);
-        // Tambahkan animasi atau efek di sini jika perlu
+
+        float finalScore = gUIPlayerUpdater.GetSurvivalTime();
+        gameOverManager.ShowGameOver(finalScore);
+
         GameOverMenu.SetActive(true);
         Destroy(gameObject);
-        // gameObject.SetActive(false); // pakai ini kalo mau respawn lagi
     }
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {

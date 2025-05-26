@@ -168,6 +168,13 @@ public class Enemy : MonoBehaviour
         // waveManager.OnEnemyKilled();
         // spawn item yang di drop enemy
         // Tambahkan animasi atau efek di sini jika perlu
+
+        GUIPlayerUpdater gUIPlayerUpdater = FindAnyObjectByType<GUIPlayerUpdater>();
+        if (gUIPlayerUpdater != null)
+        {
+            gUIPlayerUpdater.AddScore(100);
+        }
+
         foreach (LootItem lootItem in lootTable)
         {
             if (Random.Range(0f, 100f) < lootItem.dropChance)
