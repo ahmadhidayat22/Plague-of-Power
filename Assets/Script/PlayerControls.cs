@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     float angle;
 
     [Header("Health Player")]
-    private float maxHealth = 1f;
+    private float maxHealth = 100f;
     private float currentHealth;
     [SerializeField] FloatingHealthBar healthBar;
     Collider2D _lastPointTouched;
