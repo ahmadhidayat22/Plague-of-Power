@@ -64,6 +64,9 @@ public class WeaponManager : MonoBehaviour
         gunShoot.gunSprite = CurrentWeapon.weaponSprite;
         gunShoot.hasGunInfinityAmmo = CurrentWeapon.hasInfinityAmmo;
         gunShoot.gunDamage = CurrentWeapon.damage + (levelData?.extraDamage ?? 0);
+        gunShoot.shootSFX = CurrentWeapon.shootSFX;
+        gunShoot.reloadSFX = CurrentWeapon.reloadSFX;
+
         // Debug.Log(CurrentWeapon.weaponSprite);
 
         if (CurrentWeapon.animatorController != null)

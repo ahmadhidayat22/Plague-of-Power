@@ -42,7 +42,9 @@ public class GunShoot : MonoBehaviour
     public float recoilDistance = 0.08f;
     public float recoilDuration = 0.05f;
     public WeaponManager weaponManager;
-
+    [HideInInspector] public AudioClip shootSFX;
+    [HideInInspector] public AudioClip reloadSFX;
+    private AudioSource gunAudioSource;
     private void Awake()
     {
 
@@ -53,6 +55,7 @@ public class GunShoot : MonoBehaviour
         // controls.Combat.Shoot.performed += ctx => OnShoot();
         controls.Combat.Reload.performed += ctx => TryReload();
         GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
+        gunAudioSource = GetComponent<AudioSource>();
         if (audioObj == null)
         {
             Debug.LogError("AudioManager object with tag 'Audio' not found!");
@@ -141,6 +144,15 @@ public class GunShoot : MonoBehaviour
 
         if (Time.time < nextFireTime || isReloading || ShootPoint == null || bulletPrefab == null || ShootFlash == null)
             return;
+        if (shootSFX != null && gunAudioSource != null)
+        {
+            //if (!gunAudioSource.isPlaying)
+            //{
+            //    gunAudioSource.clip = shootSFX;
+            //    gunAudioSource.Play();
+            //}
+            gunAudioSource.PlayOneShot(shootSFX);
+        }
 
         if (currentAmmo <= 0)
         {
@@ -164,7 +176,7 @@ public class GunShoot : MonoBehaviour
             Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
             float angle = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg;
             bullet.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-            audioManager.PlaySFX(audioManager.shoot);
+            //audioManager.PlaySFX(audioManager.shoot);
 
             StartCoroutine(PlayRecoil());
 
@@ -235,7 +247,7 @@ public class GunShoot : MonoBehaviour
         isReloading = true;
         Debug.Log("Reloading...");
         // animator.SetTrigger("Reload"); // uncomment if you have reload animation
-        audioManager.PlaySFX(audioManager.reload);
+        //audioManager.PlaySFX(audioManager.reload);
 
         yield return new WaitForSeconds(reloadTime);
 

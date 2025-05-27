@@ -21,4 +21,8 @@ public class Weapon : ScriptableObject
     public bool isShouldBuy;
     public int costBuy;
 
+    [Header("Sound Effects")]
+    public AudioClip shootSFX;
+    public AudioClip reloadSFX;
+
 }
