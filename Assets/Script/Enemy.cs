@@ -32,6 +32,8 @@ public class Enemy : MonoBehaviour
     [Header("Loot")]
     public List<LootItem> lootTable = new List<LootItem>();
     [SerializeField] Transform pfDamagePopup;
+    [Header("Type")]
+    public bool isMiniBoss = false;
 
 
     private void Start()
@@ -174,6 +176,7 @@ public class Enemy : MonoBehaviour
         {
             gUIPlayerUpdater.AddScore(100);
         }
+        
 
         foreach (LootItem lootItem in lootTable)
         {

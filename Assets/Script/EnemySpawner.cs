@@ -4,10 +4,14 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public GameObject miniBossPrefab;
+
     private float spawnInterval = 3f;
     public float spawnDistanceFromCamera = 2f;
     private Camera mainCamera;
-
+    [Header("MiniBoss Settings")]
+    public int miniBossWaveInterval = 5; // setiap kelipatan 5
+    public int miniBossCount = 1;
     private void Start()
     {
         mainCamera = Camera.main;
@@ -24,16 +28,25 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             Vector2 spawnPos = GetRandomPositionOutsideCamera();
-            GameObject enemyObj = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-
-            Enemy enemy = enemyObj.GetComponent<Enemy>();
-            if (enemy != null)
+            if ((waveNumber + 1) % miniBossWaveInterval == 0 && i < miniBossCount )
             {
-                enemy.ScaleStats(waveNumber); // ← Terapkan scaling
+            Debug.Log("spawn" + i);
+                GameObject miniBoss = Instantiate(miniBossPrefab, spawnPos, Quaternion.identity);
+                miniBoss.GetComponent<Enemy>().ScaleStats(waveNumber);
+                
             }
-            yield return new WaitForSeconds(interval);
+            else
+            {
+                GameObject enemyObj = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+                Enemy enemy = enemyObj.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.ScaleStats(waveNumber); // ← Terapkan scaling
+                }
+            }
+                yield return new WaitForSeconds(interval);
+            }
         }
-    }
     private Vector2 GetRandomPositionOutsideCamera()
     {
         Vector2 camPos = mainCamera.transform.position;

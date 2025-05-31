@@ -19,7 +19,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7189960559569253356, guid: aedc3891ddd740c4da982d52457a4de2, type: 3}
   fireRate: 0.35
   maxAmmo: 30
-  totalAmmo: 100
+  totalAmmo: 200
   bulletSpeed: 28
   animationShootName: Shoot_ak
   animatorController: {fileID: 9100000, guid: cbbe649405b41ef40a26255a28560502, type: 2}

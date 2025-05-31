@@ -44,3 +44,15 @@ MonoBehaviour:
     extraMaxAmmo: 10
     bulletSpeedMultiplier: 1.8
     costCoin: 60
+  - level: 6
+    fireRatePercent: 6
+    extraDamage: 8
+    extraMaxAmmo: 10
+    bulletSpeedMultiplier: 1.9
+    costCoin: 75
+  - level: 7
+    fireRatePercent: 6
+    extraDamage: 8
+    extraMaxAmmo: 10
+    bulletSpeedMultiplier: 1.9
+    costCoin: 75

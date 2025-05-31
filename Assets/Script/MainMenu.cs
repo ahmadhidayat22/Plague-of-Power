@@ -19,6 +19,8 @@ public class MainMenu : MonoBehaviour
     public GameObject Transparentbackground;
     public GameObject Achievement;
     public GameObject LeaveGame;
+    [SerializeField] private TMP_Text coinText;
+    [SerializeField] private TMP_Text gemsText;
 
     const string MapsLevel1 = "Level1";
     const string MapsLevel2 = "Level2";
@@ -27,6 +29,8 @@ public class MainMenu : MonoBehaviour
     
     public void Start()
     {
+        coinText.text = PlayerPrefs.GetInt("Coin").ToString();
+        gemsText.text = PlayerPrefs.GetInt("Gems").ToString();
         // Set default 70%
         BackSound.value = 0.7f;
         EffectSound.value = 0.7f;

@@ -31,7 +31,7 @@ public class GunShoot : MonoBehaviour
     public int maxAmmo;
     public int currentAmmo;
     public int totalAmmo;
-    public float reloadTime = 2f;
+    public float reloadTime = 2.5f;
     private bool isReloading = false;
 
     public string ammoText;
@@ -42,8 +42,8 @@ public class GunShoot : MonoBehaviour
     public float recoilDistance = 0.08f;
     public float recoilDuration = 0.05f;
     public WeaponManager weaponManager;
-    [HideInInspector] public AudioClip shootSFX;
-    [HideInInspector] public AudioClip reloadSFX;
+     public AudioClip shootSFX;
+     public AudioClip reloadSFX;
     private AudioSource gunAudioSource;
     private void Awake()
     {
@@ -247,7 +247,15 @@ public class GunShoot : MonoBehaviour
         isReloading = true;
         Debug.Log("Reloading...");
         // animator.SetTrigger("Reload"); // uncomment if you have reload animation
-        //audioManager.PlaySFX(audioManager.reload);
+        if (reloadSFX != null && gunAudioSource != null)
+        {
+            //if (!gunAudioSource.isPlaying)
+            //{
+            //    gunAudioSource.clip = shootSFX;
+            //    gunAudioSource.Play();
+            //}
+            gunAudioSource.PlayOneShot(reloadSFX);
+        }
 
         yield return new WaitForSeconds(reloadTime);
 

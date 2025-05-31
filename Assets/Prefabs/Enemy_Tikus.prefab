@@ -237,11 +237,13 @@ MonoBehaviour:
   attackDamage: 1
   lootTable:
   - itemPrefab: {fileID: 8747525754561817038, guid: 6e7b2d137e3487a4ca52fb6f2d386f23, type: 3}
-    dropChance: 40
+    dropChance: 40.6
   - itemPrefab: {fileID: 8207184955055583785, guid: 6c98fc03ab9bfa349b79f0d2971c80f3, type: 3}
     dropChance: 60
   - itemPrefab: {fileID: 9025987081371244890, guid: 00cfd6dca40b0ef4fa83aa07c411dba8, type: 3}
-    dropChance: 5
+    dropChance: 1.1
+  pfDamagePopup: {fileID: 0}
+  isMiniBoss: 0
 --- !u!212 &1362675777222917478
 SpriteRenderer:
   m_ObjectHideFlags: 0
