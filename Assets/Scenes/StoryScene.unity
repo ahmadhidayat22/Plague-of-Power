@@ -1148,6 +1148,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2823953522566380177, guid: 7d760c2cd514fa341b26b88d31430ce0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 431782891}
+    - targetCorrespondingSourceObject: {fileID: 7503829296794631280, guid: 7d760c2cd514fa341b26b88d31430ce0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1523834577}
   m_SourcePrefab: {fileID: 100100000, guid: 7d760c2cd514fa341b26b88d31430ce0, type: 3}
 --- !u!224 &431782888 stripped
 RectTransform:
@@ -1744,6 +1747,7 @@ GameObject:
   - component: {fileID: 758563021}
   - component: {fileID: 758563023}
   - component: {fileID: 758563022}
+  - component: {fileID: 758563024}
   m_Layer: 5
   m_Name: 'Panel '
   m_TagString: Untagged
@@ -1810,6 +1814,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758563020}
   m_CullTransparentMesh: 1
+--- !u!225 &758563024
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758563020}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &769429968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2327,8 +2343,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Cities crumbled into ruins, and the people were left with only two choices:
-    surrender\u2026 or fight"
+  m_text: 'Cities crumbled into ruins, and the people were left with only two choices:
+    surrender or fight'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4aee4da70f81bf84fa0a208d035afe3e, type: 2}
   m_sharedMaterial: {fileID: -3175684273123482600, guid: 4aee4da70f81bf84fa0a208d035afe3e, type: 2}
@@ -2627,6 +2643,7 @@ MonoBehaviour:
   logoDisplayDuration: 2
   skipKey: 32
   delayBetweenScenes: 1.5
+  initialDelay: 1
 --- !u!1 &1476754689
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,11 +2900,28 @@ MonoBehaviour:
   fadeDuration: 1
   allowSkip: 1
   skipKey: 32
+--- !u!1 &1523834573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7503829296794631280, guid: 7d760c2cd514fa341b26b88d31430ce0, type: 3}
+  m_PrefabInstance: {fileID: 431782887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1523834574 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3569725752832931235, guid: 7d760c2cd514fa341b26b88d31430ce0, type: 3}
   m_PrefabInstance: {fileID: 431782887}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &1523834577
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523834573}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1535138775 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2823953522566380177, guid: 7d760c2cd514fa341b26b88d31430ce0, type: 3}
