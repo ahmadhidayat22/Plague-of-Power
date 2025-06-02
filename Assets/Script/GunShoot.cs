@@ -93,6 +93,14 @@ public class GunShoot : MonoBehaviour
             Debug.LogWarning("Cinemachine Shake instance not found!");
         }
         // ammoText = currentAmmo + " / " + totalAmmo;
+        float savedEffectSound = PlayerPrefs.HasKey("EffectSound") ? PlayerPrefs.GetFloat("EffectSound") : 0.1f;
+
+        // Atur volume AudioSource
+        if (gunAudioSource != null)
+        {
+            gunAudioSource.volume = savedEffectSound;
+            Debug.Log("Volume SFX diatur ke: " + savedEffectSound);
+        }
     }
     public void setCurrentAmmo()
     {
@@ -122,8 +130,6 @@ public class GunShoot : MonoBehaviour
             FaceMouse();
         }
     }
-
-
 
     void FaceMouse()
     {
@@ -271,4 +277,14 @@ public class GunShoot : MonoBehaviour
         Debug.Log("Reload complete: " + currentAmmo + " / " + totalAmmo);
         isReloading = false;
     }
+
+    public void UpdateSFXVolume(float newVolume)
+    {
+        if (gunAudioSource != null)
+        {
+            gunAudioSource.volume = newVolume;
+            Debug.Log("Volume SFX diperbarui di GunShoot: " + newVolume);
+        }
+    }
+
 }

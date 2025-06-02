@@ -140,35 +140,40 @@ public class Player : MonoBehaviour
     private void Move()
     {
         rb.MovePosition(rb.position + movement * (MoveSpeed * Time.fixedDeltaTime));
-        // Debug.Log("X:"+ movement.x);
-        // Debug.Log("Y:"+ movement.y);
 
-        if (movement.x != 0 || movement.y != 0)
+        bool isMoving = movement.x != 0 || movement.y != 0;
+
+        if (isMoving)
         {
+            // Putar langkah hanya jika belum diputar
+            if (audioManager.GetSFXSource.clip != audioManager.walk || !audioManager.GetSFXSource.isPlaying)
+            {
+                audioManager.GetSFXSource.clip = audioManager.walk;
+                audioManager.GetSFXSource.loop = true;
+                audioManager.GetSFXSource.Play();
+            }
+
             if (isFacingDown)
-            {
                 ChangeAnimationState(PLAYER_WALK);
-
-            }
             else
-            {
                 ChangeAnimationState(PLAYER_WALK_BACK);
-
-            }
         }
         else
         {
-            if (isFacingDown)
+            // Hentikan langkah jika tidak bergerak
+            if (audioManager.GetSFXSource.clip == audioManager.walk && audioManager.GetSFXSource.isPlaying)
             {
-                ChangeAnimationState(PLAYER_IDLE);
+                audioManager.GetSFXSource.Stop();
+                audioManager.GetSFXSource.clip = null; // kosongkan agar tidak nyangkut
+            }
 
-            }
+            if (isFacingDown)
+                ChangeAnimationState(PLAYER_IDLE);
             else
-            {
                 ChangeAnimationState(PLAYER_IDLE_BACK);
-            }
         }
     }
+
 
     void FlipSprite()
     {

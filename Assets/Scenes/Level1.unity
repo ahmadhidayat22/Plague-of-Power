@@ -4857,6 +4857,7 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5042,6 +5043,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cinemachineVirtualCamera: {fileID: 2025674588}
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011cb6a6f15e85041a2bfc56cc9d925f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BackSound: {fileID: 953762267}
+  EffectSound: {fileID: 1795227296}
+  txtBackSound: {fileID: 0}
+  txtEffectSound: {fileID: 0}
+  StartMenu1: {fileID: 0}
+  StartMenu2: {fileID: 0}
+  StartMenu3: {fileID: 0}
+  SettingMenu: {fileID: 0}
+  Transparentbackground: {fileID: 0}
+  Achievement: {fileID: 0}
+  LeaveGame: {fileID: 0}
+  coinText: {fileID: 0}
+  gemsText: {fileID: 0}
 --- !u!1001 &521921501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6180,7 +6206,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6313527594759679192, guid: cf808c68a5c33fa4b8f2a8f5a948faaa, type: 3}
+  m_Sprite: {fileID: 5574210925107490698, guid: cf808c68a5c33fa4b8f2a8f5a948faaa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6715,12 +6741,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 857230102}
   SFXSource: {fileID: 2086674828}
-  background: {fileID: 0}
+  background: {fileID: 8300000, guid: bdb37d7fe4497ee47bb3027f32a22de1, type: 3}
   heal: {fileID: 8300000, guid: cfd0b3e07c9981a42acd8edb4cd0dd5a, type: 3}
   menu_hoover: {fileID: 0}
   menu_select: {fileID: 0}
-  musicVolumeSlider: {fileID: 953762267}
-  sfxVolumeSlider: {fileID: 1795227296}
+  walk: {fileID: 8300000, guid: fa59d5eb226d6f94ea9384b4b01f6d52, type: 3}
+  music: {fileID: 953762267}
+  sfx: {fileID: 1795227296}
+  txtBackSound: {fileID: 174490374}
+  txtEffectSound: {fileID: 1530846259}
 --- !u!224 &627954392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7291,16 +7320,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 731076768}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.035167757, y: -0, z: -0, w: 0.9993815}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000013525636}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 579167662}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -4.031, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.5298, y: -9.999999}
+  m_AnchoredPosition: {x: -1.5298157, y: -10}
   m_SizeDelta: {x: 84.0744, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &731076770
@@ -7323,7 +7352,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: II
+  m_text: "\u2590\u2590"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
   m_sharedMaterial: {fileID: 1725155287645012601, guid: 5ac5895e4dec3034f90a64f9f2d50470, type: 2}
@@ -7332,8 +7361,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7350,8 +7379,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9114,8 +9143,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 627954391}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: UpdateBackSoundVolume
         m_Mode: 1
         m_Arguments:
@@ -14036,7 +14065,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Close
+  m_text: X
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14063,13 +14092,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -15081,7 +15110,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 53, y: -57}
-  m_SizeDelta: {x: 91.86, y: 30}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1435193741
 MonoBehaviour:
@@ -15159,8 +15188,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 5574210925107490698, guid: cf808c68a5c33fa4b8f2a8f5a948faaa, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -19647,8 +19676,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 627954391}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: UpdateEffectSoundVolume
         m_Mode: 1
         m_Arguments:
@@ -22754,6 +22783,10 @@ PrefabInstance:
     - target: {fileID: 8406899304719849558, guid: 6bf24629b4e8a7f4999c70c366d5044c, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8901409533295577898, guid: 6bf24629b4e8a7f4999c70c366d5044c, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9071237799138906088, guid: 6bf24629b4e8a7f4999c70c366d5044c, type: 3}
       propertyPath: m_IsActive

@@ -25,15 +25,20 @@ public class MainMenu : MonoBehaviour
     const string MapsLevel1 = "Level1";
     const string MapsLevel2 = "Level2";
     const string MapsLevel3 = "Level3";
-    
-    
+    const string BackSoundKey = "BackSound";
+    const string EffectSoundKey = "EffectSound";
+
     public void Start()
     {
         coinText.text = PlayerPrefs.GetInt("Coin").ToString();
         gemsText.text = PlayerPrefs.GetInt("Gems").ToString();
+
         // Set default 70%
-        BackSound.value = 0.5f;
-        EffectSound.value = 0.5f;
+        float savedBackSound = PlayerPrefs.HasKey(BackSoundKey) ? PlayerPrefs.GetFloat(BackSoundKey) : 0.1f;
+        float savedEffectSound = PlayerPrefs.HasKey(EffectSoundKey) ? PlayerPrefs.GetFloat(EffectSoundKey) : 0.1f;
+
+        BackSound.value = savedBackSound;
+        EffectSound.value = savedEffectSound;
 
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         UpdateBackSoundVolume();
@@ -49,14 +54,18 @@ public class MainMenu : MonoBehaviour
 
     public void UpdateBackSoundVolume()
     {
-        float volume = BackSound.value;
-        txtBackSound.text = Mathf.RoundToInt(volume * 100f) + "%";
+        float volumeBS = BackSound.value;
+        txtBackSound.text = Mathf.RoundToInt(volumeBS * 100f) + "%";
+        PlayerPrefs.SetFloat(BackSoundKey, volumeBS);
+        Debug.Log("BackSound volume disimpan: " + volumeBS);
     }
 
     public void UpdateEffectSoundVolume()
     {
-        float volume = EffectSound.value;
-        txtEffectSound.text = Mathf.RoundToInt(volume * 100f) + "%";
+        float volumeSFX = EffectSound.value;
+        txtEffectSound.text = Mathf.RoundToInt(volumeSFX * 100f) + "%";
+        PlayerPrefs.SetFloat(EffectSoundKey, volumeSFX);
+        Debug.Log("EffectSound volume disimpan: " + volumeSFX);
     }
 
 
