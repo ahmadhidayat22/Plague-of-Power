@@ -3347,9 +3347,11 @@ MonoBehaviour:
   allWeapons:
   - {fileID: 11400000, guid: 2de8e2cfb089ce34a9ee1eb110c4c099, type: 2}
   - {fileID: 11400000, guid: 356e92bcf4a1da443be4a426a0f3c1c8, type: 2}
+  - {fileID: 11400000, guid: 75468c382300e354e99cc48dc70b4423, type: 2}
   weaponUpgradeDatas:
   - {fileID: 11400000, guid: 6c1b7a48684f81f43b90e256cb88e015, type: 2}
   - {fileID: 11400000, guid: 3dd1f42581a91e1478f61628bf026526, type: 2}
+  - {fileID: 11400000, guid: e9ddc6fdbc1879d4baff6d55c5f14a7d, type: 2}
   weaponLevels: 0100000001000000
   currentWeaponIndex: 0
   gunShoot: {fileID: 5830152101232971048}
@@ -23441,7 +23443,7 @@ Animator:
   m_GameObject: {fileID: 8421471075787556878}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fd98f7be81c4b9b47b05c2ce69aa33ea, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -23568,7 +23570,7 @@ SpriteRenderer:
   m_SortingLayerID: 30852179
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 1942075b710eb18438ba8efd360faa64, type: 3}
+  m_Sprite: {fileID: -7696524430383623509, guid: 0f5b7eb88bdf00d478a8f701715fe0c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -18,7 +18,6 @@ public class SceneVoiceAndSwitch : MonoBehaviour
     public KeyCode skipKey = KeyCode.Space;
 
     private bool isSkipping = false;
-
     void OnEnable()
     {
         StartCoroutine(PlayAndSwitch());

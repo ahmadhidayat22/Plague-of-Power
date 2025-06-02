@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dca09f21ca0cb043a55e4767c4aecf2, type: 3}
+  m_Name: P90
+  m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 0}
+  weaponName: P90
+  weaponSprite: {fileID: 8111734861782114528, guid: 89ac4889331ff1a409e44a3b6cab7c6f, type: 3}
+  UIWeaponSprite: {fileID: 8111734861782114528, guid: 89ac4889331ff1a409e44a3b6cab7c6f, type: 3}
+  bulletPrefab: {fileID: 7189960559569253356, guid: aedc3891ddd740c4da982d52457a4de2, type: 3}
+  fireRate: 0.3
+  maxAmmo: 60
+  totalAmmo: 200
+  bulletSpeed: 30
+  animationShootName: Shoot_p90
+  animatorController: {fileID: 9100000, guid: 01861a8ec2ea49140aee5dcf9bfddd7d, type: 2}
+  hasInfinityAmmo: 0
+  damage: 5
+  isShouldBuy: 0
+  costBuy: 0
+  shootSFX: {fileID: 8300000, guid: 6811d1992f0b9c34c8d1b6fd644b334b, type: 3}
+  reloadSFX: {fileID: 8300000, guid: 24bce523ca8fa014696e4cf063bff5b0, type: 3}
