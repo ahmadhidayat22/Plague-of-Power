@@ -23,6 +23,7 @@ public class CSceneManager : MonoBehaviour
     [Header("Control")]
     public KeyCode skipKey = KeyCode.Space;
     public float delayBetweenScenes = 1f;
+    public float initialDelay = 2f; // delay sebelum cutscene pertama
 
     private bool isSkipping = false;
     private bool hasStartedTransition = false;
@@ -51,6 +52,7 @@ public class CSceneManager : MonoBehaviour
 
     IEnumerator PlayCutscenes()
     {
+        yield return new WaitForSeconds(initialDelay);
         foreach (var cutscene in cutscenes)
         {
             if (isSkipping) yield break;
