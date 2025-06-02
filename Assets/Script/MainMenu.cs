@@ -32,8 +32,8 @@ public class MainMenu : MonoBehaviour
         coinText.text = PlayerPrefs.GetInt("Coin").ToString();
         gemsText.text = PlayerPrefs.GetInt("Gems").ToString();
         // Set default 70%
-        BackSound.value = 0.7f;
-        EffectSound.value = 0.7f;
+        BackSound.value = 0.5f;
+        EffectSound.value = 0.5f;
 
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         UpdateBackSoundVolume();

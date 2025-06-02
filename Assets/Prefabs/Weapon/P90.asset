@@ -25,8 +25,8 @@ MonoBehaviour:
   animatorController: {fileID: 9100000, guid: 01861a8ec2ea49140aee5dcf9bfddd7d, type: 2}
   hasInfinityAmmo: 0
   damage: 5
-  isShouldBuy: 0
-  isLock: 0
+  isShouldBuy: 1
+  isLock: 1
   costUnlock: 100
   costBuy: 100
   shootSFX: {fileID: 8300000, guid: 6811d1992f0b9c34c8d1b6fd644b334b, type: 3}

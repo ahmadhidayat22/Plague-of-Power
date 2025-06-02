@@ -7,8 +7,6 @@ public class WeaponUnlockUI : MonoBehaviour
     public Weapon[] allWeapons;
     public Transform weaponListParent;
     public GameObject weaponItemPrefab;
-    public GameObject weaponUpgradePanel;
-    public TextMeshProUGUI coinText;
     public TextMeshProUGUI gemsText;
     void Start()
     {
