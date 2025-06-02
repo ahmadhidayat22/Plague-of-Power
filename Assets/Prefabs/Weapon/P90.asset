@@ -26,6 +26,8 @@ MonoBehaviour:
   hasInfinityAmmo: 0
   damage: 5
   isShouldBuy: 0
-  costBuy: 0
+  isLock: 0
+  costUnlock: 100
+  costBuy: 100
   shootSFX: {fileID: 8300000, guid: 6811d1992f0b9c34c8d1b6fd644b334b, type: 3}
   reloadSFX: {fileID: 8300000, guid: 24bce523ca8fa014696e4cf063bff5b0, type: 3}

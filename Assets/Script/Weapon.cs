@@ -19,6 +19,8 @@ public class Weapon : ScriptableObject
     public int damage;
 
     public bool isShouldBuy;
+    public bool isLock;
+    public int costUnlock;
     public int costBuy;
 
     [Header("Sound Effects")]

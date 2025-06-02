@@ -33,7 +33,7 @@ public class GUIPlayerUpdater : MonoBehaviour
         healImage.GetComponent<Image>();
         weaponImage.GetComponent<Image>();
         changeWeaponPanel.SetActive(false);
-        
+
     }
     private void Update()
     {
@@ -96,12 +96,29 @@ public class GUIPlayerUpdater : MonoBehaviour
     void displayNextChangeWeapon()
     {
         int nextIndex = weaponManager.currentWeaponIndex + 1;
+        bool foundUnlocked = false;
         if (nextIndex >= weaponManager.allWeapons.Length)
         {
             nextIndex = 0;
         }
+        // Cari senjata berikutnya yang tidak terkunci (isLock == false)
+        for (int i = 1; i < weaponManager.allWeapons.Length; i++)
+        {
+            int checkIndex = (weaponManager.currentWeaponIndex + i) % weaponManager.allWeapons.Length;
+
+            if (!weaponManager.allWeapons[checkIndex].isLock && !weaponManager.allWeapons[checkIndex].isShouldBuy)
+            {
+                nextIndex = checkIndex;
+                foundUnlocked = true;
+                break;
+            }
+        }
+        if (!foundUnlocked)
+        {
+            nextIndex = 0;
+        }
+
         nextWeapon = weaponManager.allWeapons[nextIndex];
-        // Debug.Log(nextWeapon);
         weaponIconSkill.GetComponent<Image>().sprite = nextWeapon.UIWeaponSprite;
     }
 

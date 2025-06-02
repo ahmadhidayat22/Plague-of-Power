@@ -45,7 +45,7 @@ public class WeaponManager : MonoBehaviour
 
         CurrentWeapon = allWeapons[index];
         int currentLevel = weaponLevels[index];
-        if(CurrentWeapon.isShouldBuy) return;
+        if(CurrentWeapon.isShouldBuy && CurrentWeapon.isLock) return;
 
          // Cari UpgradeData sesuai nama senjata
         UpgradeWeaponData upgradeData = GetUpgradeData(CurrentWeapon.weaponName);
@@ -120,7 +120,17 @@ public class WeaponManager : MonoBehaviour
     public void NextWeapon()
     {
         // Debug.Log("change weapon");
-        currentWeaponIndex = (currentWeaponIndex + 1) % allWeapons.Length;
+        for (int i = 1; i < allWeapons.Length; i++)
+        {
+            // currentWeaponIndex = (currentWeaponIndex + 1) % allWeapons.Length;
+            int checkIndex = (currentWeaponIndex + i) % allWeapons.Length;
+
+            if (!allWeapons[checkIndex].isLock && !allWeapons[checkIndex].isShouldBuy)
+            {
+                currentWeaponIndex = checkIndex;
+                break;
+            }
+        }
         EquipWeapon(currentWeaponIndex);
     }
 }

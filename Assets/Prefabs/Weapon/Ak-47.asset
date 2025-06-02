@@ -24,8 +24,10 @@ MonoBehaviour:
   animationShootName: Shoot_ak
   animatorController: {fileID: 9100000, guid: cbbe649405b41ef40a26255a28560502, type: 2}
   hasInfinityAmmo: 0
-  damage: 5
+  damage: 8
   isShouldBuy: 0
+  isLock: 0
+  costUnlock: 50
   costBuy: 50
   shootSFX: {fileID: 8300000, guid: 6811d1992f0b9c34c8d1b6fd644b334b, type: 3}
   reloadSFX: {fileID: 8300000, guid: 24bce523ca8fa014696e4cf063bff5b0, type: 3}
