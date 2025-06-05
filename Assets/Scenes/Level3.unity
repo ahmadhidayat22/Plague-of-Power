@@ -1422,7 +1422,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1627710871}
         m_TargetAssemblyTypeName: InGameUI, Assembly-CSharp
         m_MethodName: Action
         m_Mode: 5
