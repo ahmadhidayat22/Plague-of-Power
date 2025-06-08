@@ -85,7 +85,8 @@ public class Player : MonoBehaviour
 
         coinCounter = PlayerPrefs.HasKey("Coin") ? PlayerPrefs.GetInt("Coin") : 0;
         gemsCounter = PlayerPrefs.HasKey("Gems") ? PlayerPrefs.GetInt("Gems") : 0;
-
+        PlayerPrefs.SetInt("Coin", coinCounter);
+        PlayerPrefs.SetInt("Gems", gemsCounter);
     }
     void changeWeapon()
     {

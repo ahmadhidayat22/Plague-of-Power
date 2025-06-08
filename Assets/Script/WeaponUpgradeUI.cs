@@ -14,14 +14,22 @@ public class WeaponUpgradeUI : MonoBehaviour
     public TextMeshProUGUI gemsText;
 
     public Player player;
+    int coinPlayer;
+    int gemsPlayer;
 
     void Start()
     {
         CreateWeaponUI();
+        
     }
     // TODO: mainkan animasi ketika panel upgrade dibuka / ditutup
     public void OpenUpgradeUI()
     {
+        coinPlayer = player.GetCoin;
+        gemsPlayer = player.GetGems;
+
+        gemsText.text = gemsPlayer.ToString();
+        coinText.text = coinPlayer.ToString();
         Time.timeScale = 0f;
         weaponUpgradePanel.SetActive(true);
         cursorManager.SetDefaultCursor();
@@ -36,8 +44,8 @@ public class WeaponUpgradeUI : MonoBehaviour
 
     void CreateWeaponUI()
     {
-        int coinPlayer = PlayerPrefs.GetInt("Coin");
-        int gemsPlayer = PlayerPrefs.GetInt("Gems");
+        coinPlayer = player.GetCoin;
+        gemsPlayer = player.GetGems;
 
         gemsText.text = gemsPlayer.ToString();
         coinText.text = coinPlayer.ToString();
@@ -91,7 +99,7 @@ public class WeaponUpgradeUI : MonoBehaviour
                     if (weapon.isShouldBuy)
                     {
                         TextMeshProUGUI costBuy = item.transform.Find("btnBuy/GemsText").GetComponent<TextMeshProUGUI>();
-                        // FIXME : fix stats when weapon "isShouldBuy"
+                      
                         stat1.text = $"{weapon.fireRate} ";
                         stat2.text = $"{weapon.damage} ";
                         stat3.text = $"{weapon.maxAmmo} ";

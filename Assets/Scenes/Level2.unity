@@ -5789,22 +5789,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemyCount: 3
+  - enemyCount: 10
     spawnInterval: 3
-  - enemyCount: 3
+  - enemyCount: 10
+    spawnInterval: 2
+  - enemyCount: 20
+    spawnInterval: 2
+  - enemyCount: 20
     spawnInterval: 1.8
-  - enemyCount: 6
-    spawnInterval: 1.8
-  - enemyCount: 70
-    spawnInterval: 1.15
-  - enemyCount: 120
-    spawnInterval: 0.68
-  - enemyCount: 193
+  - enemyCount: 30
+    spawnInterval: 0.5
+  - enemyCount: 50
+    spawnInterval: 0.5
+  - enemyCount: 50
     spawnInterval: 0.11
-  - enemyCount: 200
+  - enemyCount: 50
     spawnInterval: 0.11
+  - enemyCount: 50
+    spawnInterval: 0.11
+  - enemyCount: 100
+    spawnInterval: 0.1
   - enemyCount: 200
-    spawnInterval: 0.09
+    spawnInterval: 0.1
+  - enemyCount: 200
+    spawnInterval: 0.1
+  - enemyCount: 150
+    spawnInterval: 0.1
+  - enemyCount: 200
+    spawnInterval: 0.1
+  - enemyCount: 200
+    spawnInterval: 0.1
+  - enemyCount: 50
+    spawnInterval: 0.1
+  - enemyCount: 50
+    spawnInterval: 0.1
+  - enemyCount: 50
+    spawnInterval: 0.05
+  - enemyCount: 50
+    spawnInterval: 0.05
+  - enemyCount: 100
+    spawnInterval: 0.05
+  - enemyCount: 100
+    spawnInterval: 0.05
+  - enemyCount: 100
+    spawnInterval: 0.05
+  - enemyCount: 100
+    spawnInterval: 0.05
+  - enemyCount: 100
+    spawnInterval: 0.05
   timeBetweenWaves: 5
   spawner: {fileID: 272388849}
   weaponUpgradeUI: {fileID: 669513371}
