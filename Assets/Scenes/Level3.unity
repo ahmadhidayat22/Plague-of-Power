@@ -4784,7 +4784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88caea3a237cd9448aace550fb69986c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 851840560834727749, guid: 75bb094ccfe1ecc4c83d30e3d9a9f94f, type: 3}
+  enemyPrefab: {fileID: 4257988346022970219, guid: c369860c3f0f62540ae97b50c5229b74, type: 3}
   miniBossPrefab: {fileID: 796483381412309098, guid: 71997c997046cc04c87080f26bf92d5b, type: 3}
   spawnDistanceFromCamera: 2
   miniBossWaveInterval: 5
@@ -8972,7 +8972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   PivotOffset: {x: 0, y: 0, z: 0}
-  AmplitudeGain: 0.09
+  AmplitudeGain: 0
   FrequencyGain: 3
   m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &1125425023
@@ -12848,7 +12848,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1634432440}
         m_TargetAssemblyTypeName: WeaponUpgradeUI, Assembly-CSharp
         m_MethodName: CloseUpgradeUI
         m_Mode: 1
@@ -14482,10 +14482,10 @@ SceneRoots:
   - {fileID: 1274208906}
   - {fileID: 1125425025}
   - {fileID: 2116163497}
-  - {fileID: 952923496}
   - {fileID: 1097829508}
   - {fileID: 1627710870}
   - {fileID: 1602221707}
   - {fileID: 53506320}
+  - {fileID: 952923496}
   - {fileID: 729903271}
   - {fileID: 2033010068}

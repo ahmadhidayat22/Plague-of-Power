@@ -288,14 +288,13 @@ public class Player : MonoBehaviour
         {
             // collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
-            coinCounter += Random.Range(1, 4);
+            coinCounter += Random.Range(4, 10);
         }
         if (collision.CompareTag("Gems") && collision.gameObject.activeSelf)
         {
             // collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
-
-            gemsCounter += Random.Range(1, 3);
+            gemsCounter += Random.Range(4, 10);
         }
         if (collision.CompareTag("Medkit") && collision.gameObject.activeSelf)
         {

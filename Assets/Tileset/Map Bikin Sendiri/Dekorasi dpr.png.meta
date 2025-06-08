@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: d11b19bb88cc154418797e3be0ac37ff
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7057872319087204067
+    second: Dekorasi dpr_0
+  - first:
+      213: -7683639206996549477
+    second: Dekorasi dpr_1
+  - first:
+      213: 2844517795375596898
+    second: Dekorasi dpr_2
+  - first:
+      213: -2272647796895942261
+    second: Dekorasi dpr_3
+  - first:
+      213: -574693140704226005
+    second: Dekorasi dpr_4
+  - first:
+      213: -2813330293736785596
+    second: Dekorasi dpr_5
+  - first:
+      213: -7456984611314570411
+    second: Dekorasi dpr_6
+  - first:
+      213: 299603714616629222
+    second: Dekorasi dpr_7
+  - first:
+      213: 3278346230870840936
+    second: Dekorasi dpr_8
+  - first:
+      213: -8965825616850915677
+    second: Dekorasi dpr_9
+  - first:
+      213: 2864005462752297076
+    second: Dekorasi dpr_10
+  - first:
+      213: -4561033750707601148
+    second: Dekorasi dpr_11
+  - first:
+      213: 2194142265041902871
+    second: Dekorasi dpr_12
+  - first:
+      213: 5881757624536011233
+    second: Dekorasi dpr_13
+  - first:
+      213: 6942952766330055486
+    second: Dekorasi dpr_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Dekorasi dpr_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 164
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d19aebe15866d0e90800000000000000
+      internalID: -7057872319087204067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_1
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 154
+        width: 152
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b90e4b4d9da3e5590800000000000000
+      internalID: -7683639206996549477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_2
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 3
+        width: 40
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 265c3ae2dd1c97720800000000000000
+      internalID: 2844517795375596898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 120
+        width: 67
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b897176aedee570e0800000000000000
+      internalID: -2272647796895942261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 121
+        width: 67
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b25987522a74608f0800000000000000
+      internalID: -574693140704226005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_5
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 101
+        width: 7
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44939f5e00b05f8d0800000000000000
+      internalID: -2813330293736785596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_6
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 97
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55b6a0b3108738890800000000000000
+      internalID: -7456984611314570411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_7
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 99
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e79c17bdf7682400800000000000000
+      internalID: 299603714616629222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_8
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 108
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8661ccd07860f7d20800000000000000
+      internalID: 3278346230870840936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_9
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 108
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3aee08dba1df29380800000000000000
+      internalID: -8965825616850915677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_10
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 94
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47001225bcdfeb720800000000000000
+      internalID: 2864005462752297076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_11
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 60
+        width: 40
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 401818818f3f3b0c0800000000000000
+      internalID: -4561033750707601148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_12
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 55
+        width: 67
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71d5e76d3c8237e10800000000000000
+      internalID: 2194142265041902871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_13
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 18
+        width: 67
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e11a69856330a150800000000000000
+      internalID: 5881757624536011233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dekorasi dpr_14
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 19
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3b2b6171c25a5060800000000000000
+      internalID: 6942952766330055486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Dekorasi dpr_0: -7057872319087204067
+      Dekorasi dpr_1: -7683639206996549477
+      Dekorasi dpr_10: 2864005462752297076
+      Dekorasi dpr_11: -4561033750707601148
+      Dekorasi dpr_12: 2194142265041902871
+      Dekorasi dpr_13: 5881757624536011233
+      Dekorasi dpr_14: 6942952766330055486
+      Dekorasi dpr_2: 2844517795375596898
+      Dekorasi dpr_3: -2272647796895942261
+      Dekorasi dpr_4: -574693140704226005
+      Dekorasi dpr_5: -2813330293736785596
+      Dekorasi dpr_6: -7456984611314570411
+      Dekorasi dpr_7: 299603714616629222
+      Dekorasi dpr_8: 3278346230870840936
+      Dekorasi dpr_9: -8965825616850915677
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
