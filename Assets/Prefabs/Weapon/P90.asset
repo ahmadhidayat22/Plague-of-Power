@@ -18,7 +18,7 @@ MonoBehaviour:
   UIWeaponSprite: {fileID: 8111734861782114528, guid: 89ac4889331ff1a409e44a3b6cab7c6f, type: 3}
   bulletPrefab: {fileID: 7189960559569253356, guid: aedc3891ddd740c4da982d52457a4de2, type: 3}
   fireRate: 0.3
-  maxAmmo: 60
+  maxAmmo: 30
   totalAmmo: 200
   bulletSpeed: 30
   animationShootName: Shoot_p90

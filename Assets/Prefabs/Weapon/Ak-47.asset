@@ -18,7 +18,7 @@ MonoBehaviour:
   UIWeaponSprite: {fileID: -7696524430383623509, guid: 0f5b7eb88bdf00d478a8f701715fe0c0, type: 3}
   bulletPrefab: {fileID: 7189960559569253356, guid: aedc3891ddd740c4da982d52457a4de2, type: 3}
   fireRate: 0.35
-  maxAmmo: 30
+  maxAmmo: 25
   totalAmmo: 200
   bulletSpeed: 28
   animationShootName: Shoot_ak

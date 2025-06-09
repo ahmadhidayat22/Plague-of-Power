@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5320cab38e739d4694f5a01ea1de2e9, type: 3}
+  m_Name: UpgradeWeaponData_Ak_47
+  m_EditorClassIdentifier: 
+  weaponName: Ak_47
+  upgradeLevels:
+  - level: 1
+    fireRatePercent: 2
+    extraDamage: 3
+    extraMaxAmmo: 6
+    bulletSpeedMultiplier: 2
+    costCoin: 23
+  - level: 2
+    fireRatePercent: 2.9
+    extraDamage: 3
+    extraMaxAmmo: 7
+    bulletSpeedMultiplier: 2.07
+    costCoin: 41
+  - level: 3
+    fireRatePercent: 3.8
+    extraDamage: 4
+    extraMaxAmmo: 8
+    bulletSpeedMultiplier: 2.14
+    costCoin: 61
+  - level: 4
+    fireRatePercent: 4.7
+    extraDamage: 4
+    extraMaxAmmo: 9
+    bulletSpeedMultiplier: 2.21
+    costCoin: 84
+  - level: 5
+    fireRatePercent: 5.6
+    extraDamage: 5
+    extraMaxAmmo: 10
+    bulletSpeedMultiplier: 2.28
+    costCoin: 101
+  - level: 6
+    fireRatePercent: 6.5
+    extraDamage: 5
+    extraMaxAmmo: 11
+    bulletSpeedMultiplier: 2.35
+    costCoin: 124
+  - level: 7
+    fireRatePercent: 7.3999996
+    extraDamage: 6
+    extraMaxAmmo: 12
+    bulletSpeedMultiplier: 2.42
+    costCoin: 142
+  - level: 8
+    fireRatePercent: 8.3
+    extraDamage: 6
+    extraMaxAmmo: 13
+    bulletSpeedMultiplier: 2.49
+    costCoin: 162
+  - level: 9
+    fireRatePercent: 9.2
+    extraDamage: 7
+    extraMaxAmmo: 14
+    bulletSpeedMultiplier: 2.56
+    costCoin: 182
+  - level: 10
+    fireRatePercent: 10.099999
+    extraDamage: 7
+    extraMaxAmmo: 15
+    bulletSpeedMultiplier: 2.63
+    costCoin: 203
+  - level: 11
+    fireRatePercent: 11
+    extraDamage: 8
+    extraMaxAmmo: 16
+    bulletSpeedMultiplier: 2.7
+    costCoin: 221
+  - level: 12
+    fireRatePercent: 11.9
+    extraDamage: 8
+    extraMaxAmmo: 17
+    bulletSpeedMultiplier: 2.77
+    costCoin: 242
+  - level: 13
+    fireRatePercent: 12.799999
+    extraDamage: 9
+    extraMaxAmmo: 18
+    bulletSpeedMultiplier: 2.84
+    costCoin: 262
+  - level: 14
+    fireRatePercent: 13.7
+    extraDamage: 9
+    extraMaxAmmo: 19
+    bulletSpeedMultiplier: 2.91
+    costCoin: 281
+  - level: 15
+    fireRatePercent: 14.599999
+    extraDamage: 10
+    extraMaxAmmo: 20
+    bulletSpeedMultiplier: 2.98
+    costCoin: 304
+  - level: 16
+    fireRatePercent: 15.5
+    extraDamage: 10
+    extraMaxAmmo: 21
+    bulletSpeedMultiplier: 3.05
+    costCoin: 323
+  - level: 17
+    fireRatePercent: 16.4
+    extraDamage: 11
+    extraMaxAmmo: 22
+    bulletSpeedMultiplier: 3.12
+    costCoin: 343
+  - level: 18
+    fireRatePercent: 17.3
+    extraDamage: 11
+    extraMaxAmmo: 23
+    bulletSpeedMultiplier: 3.19
+    costCoin: 363
+  - level: 19
+    fireRatePercent: 18.199999
+    extraDamage: 12
+    extraMaxAmmo: 24
+    bulletSpeedMultiplier: 3.26
+    costCoin: 384
+  - level: 20
+    fireRatePercent: 19.1
+    extraDamage: 12
+    extraMaxAmmo: 25
+    bulletSpeedMultiplier: 3.33
+    costCoin: 402
