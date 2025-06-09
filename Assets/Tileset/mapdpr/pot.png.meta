@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 9c32fe0968b1f67419d67be83ecc91cf
+guid: 9408b6cb7e338744880b785ece48ddd9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2697499868052367263
-    second: idle-sheet_0
-  - first:
-      213: 3588247721943993570
-    second: idle-sheet_1
-  - first:
-      213: 5196460012552468507
-    second: idle-sheet_2
-  - first:
-      213: -8352036130703429609
-    second: idle-sheet_3
+      213: 3112589160528298819
+    second: pot_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -105,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle-sheet_0
+      name: pot_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 26
-        width: 63
-        height: 81
+        x: 97
+        y: 98
+        width: 46
+        height: 79
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f97ace886d17f6520800000000000000
-      internalID: 2697499868052367263
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: idle-sheet_1
-      rect:
-        serializedVersion: 2
-        x: 158
-        y: 26
-        width: 64
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2ec8390ba440cc130800000000000000
-      internalID: 3588247721943993570
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: idle-sheet_2
-      rect:
-        serializedVersion: 2
-        x: 286
-        y: 26
-        width: 64
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b1836b179d88d1840800000000000000
-      internalID: 5196460012552468507
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: idle-sheet_3
-      rect:
-        serializedVersion: 2
-        x: 414
-        y: 26
-        width: 64
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 710b13ed36b971c80800000000000000
-      internalID: -8352036130703429609
+      spriteID: 343450da953223b20800000000000000
+      internalID: 3112589160528298819
       vertices: []
       indices: 
       edges: []
@@ -222,11 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      idle-sheet_0: 2697499868052367263
-      idle-sheet_1: 3588247721943993570
-      idle-sheet_2: 5196460012552468507
-      idle-sheet_3: -8352036130703429609
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
