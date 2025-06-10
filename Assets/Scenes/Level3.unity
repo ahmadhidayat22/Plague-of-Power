@@ -8954,7 +8954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88caea3a237cd9448aace550fb69986c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4257988346022970219, guid: c369860c3f0f62540ae97b50c5229b74, type: 3}
+  enemyPrefab: {fileID: 5998145003574048240, guid: 972bae819e43c8448b3cc4e0ecc9b73a, type: 3}
   miniBossPrefab: {fileID: 796483381412309098, guid: 71997c997046cc04c87080f26bf92d5b, type: 3}
   spawnDistanceFromCamera: 2
   miniBossWaveInterval: 5
