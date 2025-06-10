@@ -281,6 +281,11 @@ public class Player : MonoBehaviour
         GameOverMenu.SetActive(true);
         Destroy(gameObject);
     }
+    public void setPlayerPrefsCoinandGems()
+    {
+        PlayerPrefs.SetInt("Coin", coinCounter);
+        PlayerPrefs.SetInt("Gems", gemsCounter);
+    }
 
 
     void OnTriggerEnter2D(Collider2D collision)

@@ -21,38 +21,20 @@ MonoBehaviour:
     bulletSpeedMultiplier: 1.1
     costCoin: 10
   - level: 2
-    fireRatePercent: 3
-    extraDamage: 8
-    extraMaxAmmo: 5
-    bulletSpeedMultiplier: 1.6
-    costCoin: 30
+    fireRatePercent: 1.35
+    extraDamage: 2
+    extraMaxAmmo: 4
+    bulletSpeedMultiplier: 1.12
+    costCoin: 20
   - level: 3
-    fireRatePercent: 4
-    extraDamage: 9
-    extraMaxAmmo: 9
-    bulletSpeedMultiplier: 1.6
-    costCoin: 35
+    fireRatePercent: 1.35
+    extraDamage: 2
+    extraMaxAmmo: 4
+    bulletSpeedMultiplier: 1.2
+    costCoin: 30
   - level: 4
-    fireRatePercent: 1
-    extraDamage: 7
-    extraMaxAmmo: 10
-    bulletSpeedMultiplier: 1.7
-    costCoin: 50
-  - level: 5
-    fireRatePercent: 5
-    extraDamage: 8
-    extraMaxAmmo: 10
-    bulletSpeedMultiplier: 1.8
-    costCoin: 60
-  - level: 6
-    fireRatePercent: 6
-    extraDamage: 8
-    extraMaxAmmo: 10
-    bulletSpeedMultiplier: 1.9
-    costCoin: 75
-  - level: 7
-    fireRatePercent: 6
-    extraDamage: 8
-    extraMaxAmmo: 10
-    bulletSpeedMultiplier: 1.9
-    costCoin: 75
+    fireRatePercent: 1.4
+    extraDamage: 3
+    extraMaxAmmo: 5
+    bulletSpeedMultiplier: 1.18
+    costCoin: 40

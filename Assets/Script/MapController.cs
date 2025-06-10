@@ -47,6 +47,10 @@ public class MapController : MonoBehaviour
                 buyButton.gameObject.SetActive(false);
                 playButton.gameObject.SetActive(true);
             }
+            if (gemsPlayer < map.costBuy)
+            {
+                buyButton.interactable = false;
+            }
 
             buyButton.onClick.AddListener(() =>
             {

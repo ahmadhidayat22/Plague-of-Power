@@ -5,8 +5,6 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public GameObject miniBossPrefab;
-
-    private float spawnInterval = 3f;
     public float spawnDistanceFromCamera = 2f;
     private Camera mainCamera;
     [Header("MiniBoss Settings")]

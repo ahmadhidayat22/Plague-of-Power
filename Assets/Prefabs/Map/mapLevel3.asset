@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapName: Level3
   isShouldBuy: 1
-  costBuy: 300
+  costBuy: 200
   mapImage: {fileID: 6772483952969395225, guid: eb5e148986798e14f9f84f245fcb04a3, type: 3}
