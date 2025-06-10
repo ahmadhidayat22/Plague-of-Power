@@ -55,7 +55,10 @@ public class WeaponUnlockUI : MonoBehaviour
             stat3.text = $"{weapon.maxAmmo} ";
             stat4.text = $"{weapon.bulletSpeed} ";
             costUpgrade.text = $"{weapon.costUnlock}";
-
+            if (gemsPlayer < weapon.costBuy)
+            {
+                unlockButton.interactable = false;
+            }
             unlockButton.onClick.AddListener(() =>
             {
                 gemsPlayer -= weapon.costBuy;

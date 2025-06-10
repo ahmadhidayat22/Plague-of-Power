@@ -72,6 +72,7 @@ public class InGameUI : MonoBehaviour
                 audioManager.PlaySFX(audioManager.menu_select);
                 playerControls.Movement.Disable();
                 playerControls.Combat.Disable();
+                FindObjectsByType<Player>(FindObjectsSortMode.None)[0].setPlayerPrefsCoinandGems();
                 Time.timeScale = 1;
                 SceneManager.LoadScene("MainMenu");
                 break;
